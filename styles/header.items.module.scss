@@ -1,7 +1,6 @@
 @import "./variables.scss";
 
 .header-item {
-  //   div {
   text-transform: capitalize;
   color: $third_color;
   cursor: pointer;
@@ -9,14 +8,20 @@
   &::before {
     width: 0;
   }
-  &:hover::before {
+  &:not(.action-item):hover::before {
     content: "";
     position: absolute;
     bottom: 0;
     animation: expand_underline 0.25s forwards ease;
     border: 1px solid $forth_color;
   }
-  //   }
+  &.action-item {
+    background-color: $primary_color;
+    padding: 0.2rem 0.9rem;
+    border-radius: 2rem;
+    color: white;
+    border: none;
+  }
 }
 
 @keyframes expand_underline {
@@ -33,12 +38,12 @@
 
 @media only screen and (min-width: 650px) {
   .header-item {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 
 @media only screen and (min-width: 1000px) {
   .header-item {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 }

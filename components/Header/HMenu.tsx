@@ -5,7 +5,7 @@ const HMenu = () => {
   return (
     <>
       <div className={styles["h-menu-wrapper"]}>
-        <Items />
+        <Items isSmall={true} />
       </div>
     </>
   );

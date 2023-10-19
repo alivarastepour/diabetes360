@@ -5,7 +5,7 @@ const RMenu = () => {
   return (
     <>
       <div className={styles["r-menu-wrapper"]}>
-        <Items />
+        <Items isSmall={false} />
       </div>
     </>
   );

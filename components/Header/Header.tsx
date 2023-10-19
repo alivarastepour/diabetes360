@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Tilt_Neon } from "next/font/google";
+import { Tilt_Neon, Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "@/styles/header.module.scss";
 import HMenu from "./HMenu";
@@ -8,6 +8,11 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 const titltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300"],
 });
 
 const Header = () => {
@@ -23,14 +28,14 @@ const Header = () => {
 
   return (
     <>
-      <div className={`${titltNeon.className} ${styles["header-wrapper"]}`}>
-        <div className={`${styles["header-logo"]}`}>
+      <div className={`${styles["header-wrapper"]}`}>
+        <div className={`${styles["header-logo"]} ${titltNeon.className}`}>
           <Link href={"/"}>
             <span>Diabetes</span>
             <span>360</span>
           </Link>
         </div>
-        <div className={styles["header-content"]}>
+        <div className={`${inter.className} ${styles["header-content"]}`}>
           {smallScreen && (
             <div
               id="header-h-menu-logo-wrapper"
