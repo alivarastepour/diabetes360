@@ -12,7 +12,7 @@ const titltNeon = Tilt_Neon({
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300"],
+  weight: ["400"],
 });
 
 const Header = () => {
