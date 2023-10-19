@@ -2,8 +2,9 @@
 
 .hero-wrapper {
   margin-top: 50px;
-  padding: 0.2rem;
+  //   padding: 0.2rem;
   min-height: calc(100vh - 90px);
+  position: relative;
 
   .hero-background {
     position: absolute;
@@ -14,16 +15,24 @@
   }
 
   .hero-content {
+    text-transform: capitalize;
+    position: absolute;
+    top: 200px;
+    margin-left: 1rem;
     .header {
       font-size: 3.5rem;
       color: $secondary_color;
+      margin-left: 0.3rem;
+      display: block;
     }
     .changing-content {
       font-size: 1.2rem;
+      margin-left: 0.6rem;
+      display: block;
     }
-    text-transform: capitalize;
-    font-size: 2rem;
-    position: absolute;
-    top: 300px;
+    .middle {
+      margin-left: 0.5rem;
+      font-size: 2rem;
+    }
   }
 }
