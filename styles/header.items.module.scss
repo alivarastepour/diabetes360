@@ -1,0 +1,44 @@
+@import "./variables.scss";
+
+.header-item {
+  //   div {
+  text-transform: capitalize;
+  color: $third_color;
+  cursor: pointer;
+  position: relative;
+  &::before {
+    width: 0;
+  }
+  &:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    animation: expand_underline 0.25s forwards ease;
+    border: 1px solid $forth_color;
+  }
+  //   }
+}
+
+@keyframes expand_underline {
+  to {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .header-item {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .header-item {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .header-item {
+    font-size: 1.6rem;
+  }
+}
