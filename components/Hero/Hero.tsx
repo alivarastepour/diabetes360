@@ -13,7 +13,7 @@ const Hero = () => {
         <div className={styles["hero-background"]}></div>
         <div className={styles["hero-content"]}>
           <span className={styles["header"]}>Diabetes360,</span>
-          <span className={styles["middle"]}>where you know</span>
+          <span className={styles["middle"]}>where you learn</span>
           <span className={styles["changing-content"]}>
             <Typewriter
               options={{
