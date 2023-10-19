@@ -13,22 +13,6 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
-  div {
-    text-transform: capitalize;
-    color: $third_color;
-    cursor: pointer;
-    position: relative;
-    &::before {
-      width: 0;
-    }
-    &:hover::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      animation: expand_underline 0.25s forwards ease;
-      border: 1px solid $forth_color;
-    }
-  }
 }
 
 @keyframes expand_header {
@@ -41,8 +25,4 @@
   }
 }
 
-@keyframes expand_underline {
-  to {
-    width: 100%;
-  }
-}
+

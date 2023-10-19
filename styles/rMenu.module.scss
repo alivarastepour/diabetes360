@@ -1,0 +1,22 @@
+@import "./variables.scss";
+
+.r-menu-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+@media only screen and (min-width: 1000px) {
+  .r-menu-wrapper {
+    gap: 1rem;
+  }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 1000px) {
+  .r-menu-wrapper {
+    gap: 0.8rem;
+  }
+}
