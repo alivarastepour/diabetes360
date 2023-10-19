@@ -1,5 +1,9 @@
 * {
   box-sizing: border-box;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-text-select: none;
+  -webkit-user-select: none;
 }
 
 body {
