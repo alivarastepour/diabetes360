@@ -11,7 +11,7 @@ const titltNeon = Tilt_Neon({
 });
 
 const Header = () => {
-  const [smallScreen] = useMediaQuery({ queries: ["sm-400"] });
+  const [smallScreen] = useMediaQuery({ queries: ["sm-500"] });
   const [hMenuOpen, setHMenuOpen] = useState(false);
 
   console.log(smallScreen, hMenuOpen);
