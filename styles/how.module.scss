@@ -1,0 +1,38 @@
+@import "./variables.scss";
+
+.how-wrapper {
+  height: calc(100vh);
+  padding: 0.4rem;
+
+  .how-slider-wrapper {
+    display: flex;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+
+    .how-slider-item-wrapper {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      max-width: 300px;
+
+      .how-text-wrapper {
+        font-size: 1.7rem;
+        text-transform: capitalize;
+      }
+      .how-subtext-wrapper {
+        font-size: 1.2rem;
+      }
+    }
+    &:last-of-type {
+      //   margin-left: 0.2rem;
+    }
+  }
+
+  .how-header {
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: $secondary_color;
+    span {
+      color: $third_color;
+    }
+  }
+}
