@@ -29,11 +29,12 @@ export const HOW_TO_PREVENT_DATA: IPreventionItem[] = [
     subText:
       "Aim for 7-9 hours of quality sleep per night. Poor sleep patterns can contribute to insulin resistance. Getting 7-9 hours of quality sleep each night is essential for maintaining a healthy metabolic balance and reducing the risk of insulin resistance, which is often associated with poor sleep patterns. Prioritizing sleep can significantly benefit your overall health and well-being.",
   },
+
   {
-    imageAddress: "/healthy_diet.jpg",
-    text: "Follow a Balanced Diet",
+    imageAddress: "/no_suger.png",
+    text: "Reduce Sugar Intake",
     subText:
-      "Eat a well-balanced diet that includes a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats. Limit the consumption of sugary foods and drinks, as well as foods high in refined carbohydrates.",
+      "Minimize your consumption of added sugars and sugary beverages. Read food labels to identify hidden sugars. It's crucial to be mindful of your added sugar intake, as excessive consumption can contribute to weight gain and insulin resistance. Reading food labels and recognizing hidden sugars in products can empower you to make informed, healthier dietary choices and reduce your risk of Type 2 diabetes.",
   },
   {
     imageAddress: "/no_smoke.png",
@@ -42,9 +43,9 @@ export const HOW_TO_PREVENT_DATA: IPreventionItem[] = [
       "Smoking is a risk factor for Type 2 diabetes. If you smoke, seek help to quit. Smoking not only increases the risk of Type 2 diabetes but also exacerbates its complications once the disease is present. Quitting smoking is one of the most significant steps you can take to improve your overall health and reduce the risk of developing diabetes-related complications such as heart disease and kidney problems.",
   },
   {
-    imageAddress: "/no_suger.png",
-    text: "Reduce Sugar Intake",
+    imageAddress: "/healthy_diet.jpg",
+    text: "Follow a Balanced Diet",
     subText:
-      "Minimize your consumption of added sugars and sugary beverages. Read food labels to identify hidden sugars. It's crucial to be mindful of your added sugar intake, as excessive consumption can contribute to weight gain and insulin resistance. Reading food labels and recognizing hidden sugars in products can empower you to make informed, healthier dietary choices and reduce your risk of Type 2 diabetes.",
+      "Eat a well-balanced diet that includes a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats. Limit the consumption of sugary foods and drinks, as well as foods high in refined carbohydrates.",
   },
 ];
