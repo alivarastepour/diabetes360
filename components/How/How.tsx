@@ -31,7 +31,14 @@ const How = () => {
                 className={styles["how-slider-item-wrapper"]}
               >
                 <div className={styles["how-image-wrapper"]}>
-                  <Image alt="a" src={imageAddress} width={350} height={300} />
+                  <div>
+                    <Image
+                      alt="a"
+                      src={imageAddress}
+                      width={350}
+                      height={300}
+                    />
+                  </div>
                 </div>
                 <div className={styles["how-text-wrapper"]}>{text}</div>
                 <div className={styles["how-subtext-wrapper"]}>{subText}</div>

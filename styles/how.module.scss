@@ -14,6 +14,14 @@
       scroll-snap-align: start;
       max-width: 300px;
 
+      .how-image-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
       .how-text-wrapper {
         font-size: 1.7rem;
         text-transform: capitalize;
@@ -22,17 +30,27 @@
         font-size: 1.2rem;
       }
     }
-    &:last-of-type {
-      //   margin-left: 0.2rem;
-    }
   }
 
   .how-header {
     font-size: 2rem;
     text-transform: capitalize;
     color: $secondary_color;
+    position: relative;
+    margin-bottom: 4rem;
     span {
       color: $third_color;
+    }
+    ::before {
+      content: "How";
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.15;
+      // right: 0;
+      left: 0;
+      // left: 30px;
+      top: -40px;
+      z-index: -10;
     }
   }
 }
