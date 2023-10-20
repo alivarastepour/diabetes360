@@ -3,11 +3,22 @@ import { Tilt_Neon } from "next/font/google";
 import { HOW_TO_PREVENT_DATA } from "./data";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import useMediaQuery from "@/hooks/useMediaQuery";
 const tiltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],
 });
 const How = () => {
+  const [isMedium, isLarge] = useMediaQuery({ queries: ["bg-700", "bg-1000"] });
+  console.log(isMedium, isLarge);
+
+  const [imageRect, setImageRect] = useState<{
+    width: number;
+    height: number;
+  }>({
+    width: 350,
+    height: 300,
+  });
   useEffect(() => {
     if (!window) return;
     document
@@ -16,6 +27,27 @@ const How = () => {
         (item as HTMLElement).style.maxWidth = `${window.innerWidth - 12.8}px`;
       });
   }, []);
+
+  useEffect(() => {
+    // if (!isMedium) return;
+
+    if (isLarge) {
+      setImageRect({
+        width: 400,
+        height: 350,
+      });
+    } else if (isMedium) {
+      setImageRect({
+        width: 300,
+        height: 250,
+      });
+    } else {
+      setImageRect({
+        width: 350,
+        height: 300,
+      });
+    }
+  }, [isMedium, isLarge]);
 
   return (
     <>
@@ -36,8 +68,8 @@ const How = () => {
                     <Image
                       alt="a"
                       src={imageAddress}
-                      width={350}
-                      height={300}
+                      width={imageRect.width}
+                      height={imageRect.height}
                     />
                   </div>
                 </div>
