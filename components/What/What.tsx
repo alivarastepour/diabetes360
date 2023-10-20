@@ -24,7 +24,7 @@ const What = () => {
           Diabetes is the most common form of diabetes and is often associated
           with lifestyle and genetic factors. In Type 2 diabetes, the body
           doesn&apos;t use insulin properly (insulin resistance), and over time,
-          the pancreas may not produce enough insulin. This leads to elevated
+          the pancreas may not produce enough insulin. This causes elevated
           blood sugar levels.
         </div>
       </div>
