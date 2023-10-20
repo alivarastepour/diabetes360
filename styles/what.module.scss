@@ -47,7 +47,16 @@
   }
 }
 
-@media only screen and (min-height: 850px) {
+@media only screen and (min-height: 900px) {
+  .what-wrapper {
+    .what-content {
+      font-size: 1.45rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+@media only screen and (min-height: 850px) and (max-height: 900px) {
   .what-wrapper {
     .what-content {
       font-size: 1.4rem;
