@@ -4,6 +4,17 @@
   margin-top: 50px;
   min-height: calc(100vh - 40px);
   padding: 0.2rem 0.4rem;
+  position: relative;
+  .what-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/blue_circle.svg");
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    z-index: -1;
+    filter: blur(10px);
+  }
   .what-header {
     color: $secondary_color;
     text-transform: capitalize;
@@ -31,5 +42,7 @@
   }
   .i {
     overflow: scroll;
+    width: 100%;
+    height: 100px;
   }
 }

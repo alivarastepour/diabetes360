@@ -1,6 +1,6 @@
 import styles from "@/styles/what.module.scss";
 import { Tilt_Neon } from "next/font/google";
-
+import Image from "next/image";
 const titltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],
@@ -9,6 +9,7 @@ const What = () => {
   return (
     <>
       <div className={`${titltNeon.className} ${styles["what-wrapper"]}`}>
+        <div className={styles["what-background"]}></div>
         <div className={styles["what-header"]}>
           <span>What </span>
           is diabetes
