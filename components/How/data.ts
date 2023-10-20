@@ -6,7 +6,7 @@ interface IPreventionItem {
 
 export const HOW_TO_PREVENT_DATA: IPreventionItem[] = [
   {
-    imageAddress: "/healthy_weight.jpg",
+    imageAddress: "/weight.jpg",
     text: "maintain a healthy weight",
     subText:
       "Aim for a healthy body weight by managing your diet and engaging in regular physical activity. Losing excess weight can significantly reduce your risk of Type 2 diabetes. Additionally, maintaining a balanced lifestyle can also improve overall well-being and lower the likelihood of other chronic health conditions.",
@@ -42,7 +42,7 @@ export const HOW_TO_PREVENT_DATA: IPreventionItem[] = [
       "Smoking is a risk factor for Type 2 diabetes. If you smoke, seek help to quit. Smoking not only increases the risk of Type 2 diabetes but also exacerbates its complications once the disease is present. Quitting smoking is one of the most significant steps you can take to improve your overall health and reduce the risk of developing diabetes-related complications such as heart disease and kidney problems.",
   },
   {
-    imageAddress: "/no_suger.jpg",
+    imageAddress: "/no_suger.png",
     text: "Reduce Sugar Intake",
     subText:
       "Minimize your consumption of added sugars and sugary beverages. Read food labels to identify hidden sugars. It's crucial to be mindful of your added sugar intake, as excessive consumption can contribute to weight gain and insulin resistance. Reading food labels and recognizing hidden sugars in products can empower you to make informed, healthier dietary choices and reduce your risk of Type 2 diabetes.",
