@@ -1,8 +1,21 @@
 @import "./variables.scss";
 
 .how-wrapper {
-  height: calc(100vh);
+  min-height: calc(100vh);
   padding: 0.4rem;
+  position: relative;
+
+  .how-background {
+    position: absolute;
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.4rem);
+    background-image: url("/blue_circle.svg");
+    background-position: 100% 100%;
+    // background-size: 200px 200px;
+    filter: blur(10px);
+    z-index: -1;
+    background-repeat: no-repeat;
+  }
 
   .how-slider-wrapper {
     display: flex;
@@ -37,7 +50,7 @@
     text-transform: capitalize;
     color: $secondary_color;
     position: relative;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     span {
       color: $third_color;
     }

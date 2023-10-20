@@ -20,6 +20,7 @@ const How = () => {
   return (
     <>
       <div className={`${tiltNeon.className} ${styles["how-wrapper"]}`}>
+        <div className={styles["how-background"]}></div>
         <div className={styles["how-header"]}>
           <span>How </span> to prevent Diabetes
         </div>
