@@ -27,6 +27,11 @@ const What = () => {
           the pancreas may not produce enough insulin. This causes elevated
           blood sugar levels.
         </div>
+        {window && (
+          <div>
+            {window.innerHeight}, {window.outerHeight}
+          </div>
+        )}
       </div>
     </>
   );
