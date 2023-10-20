@@ -124,7 +124,15 @@
     }
   }
 }
-
+@media only screen and (min-width: 700px) {
+  .what-wrapper {
+    padding: 1rem;
+    .what-background {
+      width: calc(100% - 1rem);
+      height: calc(100% - 1rem);
+    }
+  }
+}
 @media only screen and (min-width: 600px) and (max-width: 900px) {
   .what-wrapper {
     .what-header {
