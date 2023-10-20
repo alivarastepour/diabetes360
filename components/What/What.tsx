@@ -1,7 +1,5 @@
 import styles from "@/styles/what.module.scss";
 import { Tilt_Neon } from "next/font/google";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 const titltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],

@@ -7,8 +7,8 @@
   position: relative;
   .what-background {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.2rem);
     background-image: url("/blue_circle.svg");
     background-repeat: no-repeat;
     background-position: 100% 100%;
