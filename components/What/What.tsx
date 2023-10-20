@@ -7,15 +7,6 @@ const titltNeon = Tilt_Neon({
   weight: ["400"],
 });
 const What = () => {
-  const [state, setState] = useState(0);
-
-  useEffect(() => {
-    if (!window) {
-      return;
-    }
-    setState(window.innerHeight);
-  }, []);
-
   return (
     <>
       <div className={`${titltNeon.className} ${styles["what-wrapper"]}`}>
@@ -35,7 +26,7 @@ const What = () => {
           with lifestyle and genetic factors. In Type 2 diabetes, the body
           doesn&apos;t use insulin properly (insulin resistance), and over time,
           the pancreas may not produce enough insulin. This causes elevated
-          blood sugar levels.{state}
+          blood sugar levels.
         </div>
       </div>
     </>
