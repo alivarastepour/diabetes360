@@ -30,9 +30,11 @@
       content: "What";
       position: absolute;
       font-size: 8rem;
-      opacity: 0.2;
-      right: 0;
-      top: -100px;
+      opacity: 0.15;
+      // right: 0;
+      left: 0;
+      // left: 30px;
+      top: -40px;
       z-index: -10;
     }
   }
@@ -78,6 +80,9 @@
   .what-wrapper {
     .what-header {
       font-size: 4.2rem;
+      ::before {
+        font-size: 11rem;
+      }
     }
     .what-background {
       background-image: none;
