@@ -1,11 +1,21 @@
 import styles from "@/styles/what.module.scss";
 import { Tilt_Neon } from "next/font/google";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 const titltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],
 });
 const What = () => {
+  const [state, setState] = useState(0);
+
+  useEffect(() => {
+    if (!window) {
+      return;
+    }
+    setState(window.innerHeight);
+  }, []);
+
   return (
     <>
       <div className={`${titltNeon.className} ${styles["what-wrapper"]}`}>
@@ -25,13 +35,8 @@ const What = () => {
           with lifestyle and genetic factors. In Type 2 diabetes, the body
           doesn&apos;t use insulin properly (insulin resistance), and over time,
           the pancreas may not produce enough insulin. This causes elevated
-          blood sugar levels.
+          blood sugar levels.{state}
         </div>
-        {window && (
-          <div>
-            {window.innerHeight}, {window.outerHeight}
-          </div>
-        )}
       </div>
     </>
   );
