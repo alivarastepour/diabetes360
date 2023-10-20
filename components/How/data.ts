@@ -42,10 +42,4 @@ export const HOW_TO_PREVENT_DATA: IPreventionItem[] = [
     subText:
       "Smoking is a risk factor for Type 2 diabetes. If you smoke, seek help to quit. Smoking not only increases the risk of Type 2 diabetes but also exacerbates its complications once the disease is present. Quitting smoking is one of the most significant steps you can take to improve your overall health and reduce the risk of developing diabetes-related complications such as heart disease and kidney problems.",
   },
-  {
-    imageAddress: "/healthy_diet.jpg",
-    text: "Follow a Balanced Diet",
-    subText:
-      "Eat a well-balanced diet that includes a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats. Limit the consumption of sugary foods and drinks, as well as foods high in refined carbohydrates.",
-  },
 ];
