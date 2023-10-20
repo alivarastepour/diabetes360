@@ -2,8 +2,8 @@
 
 .what-wrapper {
   margin-top: 50px;
-  height: calc(100vh - 40px);
-  padding: 0.2rem;
+  min-height: calc(100vh - 40px);
+  padding: 0.2rem 0.4rem;
   .what-header {
     color: $secondary_color;
     text-transform: capitalize;
@@ -11,6 +11,7 @@
     position: relative;
     width: 100%;
     span {
+      text-transform: capitalize;
       color: $third_color;
     }
 

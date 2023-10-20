@@ -1,6 +1,6 @@
 import styles from "@/styles/what.module.scss";
 import { Tilt_Neon } from "next/font/google";
-import Image from "next/image";
+
 const titltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],
@@ -10,7 +10,7 @@ const What = () => {
     <>
       <div className={`${titltNeon.className} ${styles["what-wrapper"]}`}>
         <div className={styles["what-header"]}>
-          <span>what </span>
+          <span>What </span>
           is diabetes
         </div>
         <div className={styles["what-content"]}>
@@ -25,9 +25,6 @@ const What = () => {
           doesn&apos;t use insulin properly (insulin resistance), and over time,
           the pancreas may not produce enough insulin. This leads to elevated
           blood sugar levels.
-        </div>
-        <div className={styles["i"]}>
-          <Image alt="a" src={"/w.webp"} width={600} height={500} />
         </div>
       </div>
     </>
