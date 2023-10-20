@@ -26,7 +26,10 @@ const How = () => {
         <div className={styles["how-slider-wrapper"]}>
           {HOW_TO_PREVENT_DATA.map(({ imageAddress, subText, text }) => {
             return (
-              <div className={styles["how-slider-item-wrapper"]}>
+              <div
+                key={imageAddress}
+                className={styles["how-slider-item-wrapper"]}
+              >
                 <div className={styles["how-image-wrapper"]}>
                   <Image alt="a" src={imageAddress} width={350} height={300} />
                 </div>
