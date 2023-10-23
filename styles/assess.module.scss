@@ -2,6 +2,7 @@
 
 .assess-wrapper {
   padding: 0.4rem;
+  min-height: calc(100vh - 40px);
   .assess-header {
     font-size: 2rem;
     color: $secondary_color;
@@ -15,7 +16,7 @@
     ::before {
       content: "Assess";
       position: absolute;
-      font-size: 8rem;
+      font-size: 7rem;
       opacity: 0.15;
       left: 0;
       top: -40px;
@@ -29,6 +30,9 @@
     }
     .assess-actions {
       margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       button {
         background-color: transparent;
         border: none;
@@ -38,8 +42,6 @@
         cursor: pointer;
       }
       .take {
-        // color: white;
-        // background-color: $primary_color;
         padding: 0.4rem 1rem;
         border-radius: 0.4rem;
         border: 1px solid $primary_color;

@@ -17,7 +17,7 @@ const Assess = () => {
           <span>assess </span> your risk
         </div>
         <div className={styles["assess-content-wrapper"]}>
-          <div className={styles["assess-content"]}>
+          <div className={`${tiltNeon.className} ${styles["assess-content"]}`}>
             Artificial intelligence (AI) has revolutionized the field of
             healthcare by enhancing disease diagnosis. AI&apos;s capacity to
             analyze vast datasets, such as patient records and medical images,
