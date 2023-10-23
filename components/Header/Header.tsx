@@ -19,8 +19,6 @@ const Header = () => {
   const [smallScreen] = useMediaQuery({ queries: ["sm-500"] });
   const [hMenuOpen, setHMenuOpen] = useState(false);
 
-  console.log(smallScreen, hMenuOpen);
-
   useEffect(() => {
     if (smallScreen === undefined) return;
     if (!smallScreen) setHMenuOpen(false);

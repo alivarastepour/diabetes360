@@ -10,7 +10,6 @@ const tiltNeon = Tilt_Neon({
 });
 const How = () => {
   const [isMedium, isLarge] = useMediaQuery({ queries: ["bg-700", "bg-1000"] });
-  console.log(isMedium, isLarge);
 
   const [imageRect, setImageRect] = useState<{
     width: number;
