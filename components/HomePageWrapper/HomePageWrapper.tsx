@@ -1,3 +1,4 @@
+import Assess from "../Asess/Assess";
 import Header from "../Header/Header";
 import Hero from "../Hero/Hero";
 import How from "../How/How";
@@ -10,6 +11,7 @@ const HomePageWrapper = () => {
       <Hero />
       <What />
       <How />
+      <Assess />
     </>
   );
 };
