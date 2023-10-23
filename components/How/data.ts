@@ -1,8 +1,4 @@
-interface IPreventionItem {
-  imageAddress: string;
-  text: string;
-  subText: string;
-}
+import { IPreventionItem } from "@/interfaces/IPreventionItem";
 
 export const HOW_TO_PREVENT_DATA: IPreventionItem[] = [
   {

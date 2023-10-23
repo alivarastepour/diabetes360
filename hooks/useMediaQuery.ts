@@ -1,5 +1,6 @@
-import { TMediaQuery } from "@/types/TMediaQuery";
 import { useEffect, useRef, useState } from "react";
+
+import { TMediaQuery } from "@/types/TMediaQuery";
 
 const useMediaQuery = ({ queries }: { queries: TMediaQuery[] }) => {
   const [queriesResult, setQueriesResult] = useState<boolean[]>([]);

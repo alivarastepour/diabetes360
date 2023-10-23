@@ -1,7 +1,10 @@
-import styles from "@/styles/hero.module.scss";
 import { Tilt_Neon } from "next/font/google";
+
+import styles from "@/styles/hero.module.scss";
+
 import Typewriter from "typewriter-effect";
-const titltNeon = Tilt_Neon({
+
+const tiltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -9,7 +12,7 @@ const titltNeon = Tilt_Neon({
 const Hero = () => {
   return (
     <>
-      <div className={`${titltNeon.className} ${styles["hero-wrapper"]}`}>
+      <div className={`${tiltNeon.className} ${styles["hero-wrapper"]}`}>
         <div className={styles["hero-background"]}></div>
         <div className={styles["hero-content"]}>
           <span className={styles["header"]}>Diabetes360,</span>

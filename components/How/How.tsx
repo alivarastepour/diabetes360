@@ -1,23 +1,27 @@
-import styles from "@/styles/how.module.scss";
-import { Tilt_Neon } from "next/font/google";
-import { HOW_TO_PREVENT_DATA } from "./data";
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import { Tilt_Neon } from "next/font/google";
+import Image from "next/image";
+
 import useMediaQuery from "@/hooks/useMediaQuery";
+
+import styles from "@/styles/how.module.scss";
+
+import { HOW_TO_PREVENT_DATA } from "./data";
+
+import { IImageRect } from "@/interfaces/IImageRect";
+
 const tiltNeon = Tilt_Neon({
   subsets: ["latin"],
   weight: ["400"],
 });
+
 const How = () => {
   const [isMedium, isLarge] = useMediaQuery({ queries: ["bg-700", "bg-1000"] });
-
-  const [imageRect, setImageRect] = useState<{
-    width: number;
-    height: number;
-  }>({
+  const [imageRect, setImageRect] = useState<IImageRect>({
     width: 350,
     height: 300,
   });
+
   useEffect(() => {
     if (!window) return;
     document
@@ -28,24 +32,11 @@ const How = () => {
   }, []);
 
   useEffect(() => {
-    // if (!isMedium) return;
-
-    if (isLarge) {
-      setImageRect({
-        width: 400,
-        height: 350,
-      });
-    } else if (isMedium) {
-      setImageRect({
-        width: 300,
-        height: 250,
-      });
-    } else {
-      setImageRect({
-        width: 350,
-        height: 300,
-      });
-    }
+    const newImageRect: IImageRect = {
+      height: isLarge ? 350 : isMedium ? 250 : 300,
+      width: isLarge ? 400 : isMedium ? 300 : 350,
+    };
+    setImageRect(newImageRect);
   }, [isMedium, isLarge]);
 
   return (
