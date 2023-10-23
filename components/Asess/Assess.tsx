@@ -1,6 +1,8 @@
+import useMediaQuery from "@/hooks/useMediaQuery";
 import styles from "@/styles/assess.module.scss";
 import { Tilt_Neon, Montserrat } from "next/font/google";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400"],
@@ -11,6 +13,17 @@ const titltNeon = Tilt_Neon({
   weight: ["400"],
 });
 const Assess = () => {
+  const [isLarge] = useMediaQuery({ queries: ["bg-1100"] });
+  const [imageRect, setImageRect] = useState({ width: 300, height: 400 });
+
+  useEffect(() => {
+    const newImageRect = {
+      height: isLarge ? 500 : 400,
+      width: isLarge ? 400 : 300,
+    };
+    setImageRect(newImageRect);
+  }, [isLarge]);
+
   return (
     <>
       <div className={styles["assess-wrapper"]}>
@@ -32,7 +45,12 @@ const Assess = () => {
             supervision to ensure more accurate diagnoses.
           </div>
           <div className={styles["medical-test"]}>
-            <Image alt="A" src={"/medical_test.jpg"} width={300} height={400} />
+            <Image
+              alt="A"
+              src={"/medical_test.jpg"}
+              width={imageRect.width}
+              height={imageRect.height}
+            />
           </div>
         </div>
         <div className={`${styles["assess-actions"]}`}>
