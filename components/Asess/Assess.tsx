@@ -1,5 +1,6 @@
 import styles from "@/styles/assess.module.scss";
 import { Tilt_Neon, Inter } from "next/font/google";
+import Image from "next/image";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400"],
@@ -30,19 +31,27 @@ const Assess = () => {
             It&apos;s worth noting that test results should undergo technical
             supervision to ensure more accurate diagnoses.
           </div>
-          <div className={`${styles["assess-actions"]}`}>
-            <button className={styles["take"]}>
-              <div className={styles["take-wrapper"]}>
-                <div className={`${inter.className} ${styles["take-content"]}`}>
-                  take the test
-                </div>
-                <div className={styles["take-icon"]}></div>
-              </div>
-            </button>
-            <button className={`${inter.className} ${styles["read"]}`}>
-              read more about our approach
-            </button>
+          <div className={styles["medical-test"]}>
+            <Image
+              alt="A"
+              src={"/medical_test.avif"}
+              width={626}
+              height={417}
+            />
           </div>
+        </div>
+        <div className={`${styles["assess-actions"]}`}>
+          <button className={styles["take"]}>
+            <div className={styles["take-wrapper"]}>
+              <div className={`${inter.className} ${styles["take-content"]}`}>
+                take the test
+              </div>
+              <div className={styles["take-icon"]}></div>
+            </div>
+          </button>
+          <button className={`${inter.className} ${styles["read"]}`}>
+            read more about our approach
+          </button>
         </div>
       </div>
     </>

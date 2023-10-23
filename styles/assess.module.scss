@@ -38,53 +38,133 @@
       font-size: 1.1rem;
       line-height: 1.6rem;
     }
-    .assess-actions {
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      button {
-        background-color: transparent;
-        border: none;
-        outline: none;
-        text-transform: capitalize;
-        font-weight: normal;
-        cursor: pointer;
-      }
-      .take {
-        padding: 0.4rem 1rem;
-        border-radius: 0.4rem;
-        border: 1px solid $primary_color;
-        font-size: 1.2rem;
+    .medical-test {
+      display: none;
+    }
+  }
+  .assess-actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      text-transform: capitalize;
+      font-weight: normal;
+      cursor: pointer;
+    }
+    .take {
+      padding: 0.4rem 1rem;
+      border-radius: 0.4rem;
+      border: 1px solid $primary_color;
+      font-size: 1.2rem;
 
-        :hover {
-          .take-icon {
-            transform: translateX(0.25rem);
-          }
-        }
-        .take-wrapper {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-          .take-content {
-          }
-          .take-icon {
-            width: 15px;
-            height: 15px;
-            background-image: url("/arrow.png");
-            background-size: 15px 15px;
-            background-repeat: no-repeat;
-            margin-left: 0.2rem;
-            transition: 0.3s all ease;
-          }
+      :hover {
+        .take-icon {
+          transform: translateX(0.25rem);
         }
       }
-      .read {
-        margin-top: 0.5rem;
-        font-size: 0.9rem;
-        text-decoration: underline;
-        color: #444;
+      .take-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .take-content {
+        }
+        .take-icon {
+          width: 15px;
+          height: 15px;
+          background-image: url("/arrow.png");
+          background-size: 15px 15px;
+          background-repeat: no-repeat;
+          margin-left: 0.2rem;
+          transition: 0.3s all ease;
+        }
+      }
+    }
+    .read {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      color: #444;
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .assess-wrapper {
+    .assess-header {
+      font-size: 4.2rem;
+      ::before {
+        font-size: 11rem;
+      }
+    }
+    .assess-background {
+      background-image: none;
+    }
+    .assess-content-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      .assess-content {
+        font-size: 1.7rem;
+        line-height: 2.3rem;
+        text-align: justify;
+        flex: 0 0 50%;
+      }
+      .medical-test {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1000px) {
+  .assess-wrapper {
+    .assess-header {
+      font-size: 4rem;
+    }
+    .assess-background {
+      background-size: 400px 400px;
+    }
+    .assess-content-wrapper {
+      .assess-content {
+        font-size: 2rem;
+        line-height: 2.6rem;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 700px) {
+  .assess-wrapper {
+    padding: 1rem;
+    .assess-background {
+      width: calc(100% - 1rem);
+      height: calc(100% - 1rem);
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .assess-wrapper {
+    .assess-header {
+      font-size: 3rem;
+    }
+    .assess-background {
+      background-size: 400px 400px;
+    }
+    .assess-content-wrapper {
+      .assess-content {
+        font-size: 1.85rem;
+        line-height: 2.4rem;
       }
     }
   }
