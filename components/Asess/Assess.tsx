@@ -19,13 +19,13 @@ const Assess = () => {
         <div className={styles["assess-content-wrapper"]}>
           <div className={styles["assess-content"]}>
             Artificial intelligence (AI) has revolutionized the field of
-            healthcare by enhancing disease diagnosis. AI's capacity to analyze
-            vast datasets, such as patient records and medical images, enables
-            the early detection of diseases like cancer or diabetes. It offers
-            quicker and more consistent results, reducing the risk of human
-            error. Based on this technology, we have developed a test that can
-            accurately assess an individual's risk for diseases, allowing for
-            proactive and personalized healthcare management.
+            healthcare by enhancing disease diagnosis. AI&apos;s capacity to
+            analyze vast datasets, such as patient records and medical images,
+            enables the early detection of diseases like cancer or diabetes. It
+            offers quicker and more consistent results, reducing the risk of
+            human error. Based on this technology, we have developed a test that
+            can accurately assess an individual&apos;s risk for diseases,
+            allowing for proactive and personalized healthcare management.
           </div>
           <div className={`${inter.className} ${styles["assess-actions"]}`}>
             <button className={styles["take"]}>
