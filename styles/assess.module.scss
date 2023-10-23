@@ -3,13 +3,22 @@
 .assess-wrapper {
   padding: 0.4rem;
   min-height: calc(100vh - 40px);
+  .assess-background {
+    position: absolute;
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.4rem);
+    background-image: url("/blue_circle.svg");
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    z-index: -1;
+    filter: blur(10px);
+  }
   .assess-header {
     font-size: 2rem;
     color: $secondary_color;
     text-transform: capitalize;
     position: relative;
     span {
-      text-transform: capitalize;
       color: $third_color;
     }
 
