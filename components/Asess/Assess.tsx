@@ -32,12 +32,7 @@ const Assess = () => {
             supervision to ensure more accurate diagnoses.
           </div>
           <div className={styles["medical-test"]}>
-            <Image
-              alt="A"
-              src={"/medical_test.avif"}
-              width={626}
-              height={417}
-            />
+            <Image alt="A" src={"/medical_test.jpg"} width={300} height={400} />
           </div>
         </div>
         <div className={`${styles["assess-actions"]}`}>

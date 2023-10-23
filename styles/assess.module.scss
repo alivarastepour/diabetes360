@@ -93,6 +93,59 @@
   }
 }
 
+@media only screen and (min-width: 1500px) {
+  .assess-wrapper {
+    .assess-content-wrapper {
+      .assess-content {
+        font-size: 2.2rem !important;
+        line-height: 2.9rem !important;
+        flex: 0 0 60% !important;
+      }
+      .medical-test {
+        img {
+          width: 400px;
+          height: 500px;
+        }
+      }
+    }
+    .assess-actions {
+      // margin-top: 3rem/;
+    }
+  }
+}
+@media only screen and (min-width: 1300px) and (max-width: 1500px) {
+  .assess-wrapper {
+    .assess-content-wrapper {
+      .assess-content {
+        font-size: 2rem !important;
+        line-height: 2.6rem !important;
+      }
+      .medical-test {
+        img {
+          width: 400px;
+          height: 500px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1100px) and (max-width: 1300px) {
+  .assess-wrapper {
+    .assess-content-wrapper {
+      .assess-content {
+        font-size: 1.8rem !important;
+        line-height: 2.4rem !important;
+      }
+      .medical-test {
+        img {
+          width: 400px;
+          height: 500px;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 1000px) {
   .assess-wrapper {
     .assess-header {
@@ -110,10 +163,10 @@
       align-items: center;
       justify-content: flex-start;
       .assess-content {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         line-height: 2.3rem;
         text-align: justify;
-        flex: 0 0 50%;
+        flex: 0 0 55%;
       }
       .medical-test {
         display: flex;
@@ -122,6 +175,24 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+      }
+    }
+    .assess-actions {
+      .take {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+        .take-wrapper {
+          .take-icon {
+            background-size: 20px 20px;
+            width: 20px;
+            height: 20px;
+          }
+          .take-content {
+          }
+        }
+      }
+      .read {
+        font-size: 1.1rem;
       }
     }
   }
