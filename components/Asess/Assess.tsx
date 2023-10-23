@@ -13,8 +13,9 @@ const Assess = () => {
   return (
     <>
       <div className={styles["assess-wrapper"]}>
+        <div className={styles["assess-background"]}></div>
         <div className={`${tiltNeon.className} ${styles["assess-header"]}`}>
-          <span>assess </span> your risk
+          <span>Assess </span> your risk
         </div>
         <div className={styles["assess-content-wrapper"]}>
           <div className={`${tiltNeon.className} ${styles["assess-content"]}`}>
@@ -26,6 +27,8 @@ const Assess = () => {
             human error. Based on this technology, we have developed a test that
             can accurately assess an individual&apos;s risk for diseases,
             allowing for proactive and personalized healthcare management.
+            It&apos;s worth noting that test results should undergo technical
+            supervision to ensure more accurate diagnoses.
           </div>
           <div className={`${inter.className} ${styles["assess-actions"]}`}>
             <button className={styles["take"]}>
