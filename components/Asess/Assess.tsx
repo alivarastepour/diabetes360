@@ -30,14 +30,16 @@ const Assess = () => {
             It&apos;s worth noting that test results should undergo technical
             supervision to ensure more accurate diagnoses.
           </div>
-          <div className={`${inter.className} ${styles["assess-actions"]}`}>
+          <div className={`${styles["assess-actions"]}`}>
             <button className={styles["take"]}>
               <div className={styles["take-wrapper"]}>
-                <div className={styles["take-content"]}>take the test</div>
+                <div className={`${inter.className} ${styles["take-content"]}`}>
+                  take the test
+                </div>
                 <div className={styles["take-icon"]}></div>
               </div>
             </button>
-            <button className={styles["read"]}>
+            <button className={`${inter.className} ${styles["read"]}`}>
               read more about our approach
             </button>
           </div>
