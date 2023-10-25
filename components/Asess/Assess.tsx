@@ -7,6 +7,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import styles from "@/styles/assess.module.scss";
 
 import { IImageRect } from "@/interfaces/IImageRect";
+import Link from "next/link";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -68,7 +69,7 @@ const Assess = () => {
               <div
                 className={`${montserrat.className} ${styles["take-content"]}`}
               >
-                take the test
+                <Link href={"/RiskAssessment"}>take the test</Link>
               </div>
               <div className={styles["take-icon"]}></div>
             </div>
