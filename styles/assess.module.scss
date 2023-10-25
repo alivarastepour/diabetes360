@@ -58,7 +58,6 @@
     .take {
       padding: 0.4rem 1rem;
       border-radius: 0.4rem;
-      color: $secondary_color;
       border: 1px solid $third_color;
       font-size: 1.2rem;
 
@@ -68,6 +67,10 @@
         align-items: center;
         justify-content: space-between;
         .take-content {
+          a {
+            text-decoration: none;
+            color: $secondary_color;
+          }
         }
         .take-icon {
           width: 15px;
