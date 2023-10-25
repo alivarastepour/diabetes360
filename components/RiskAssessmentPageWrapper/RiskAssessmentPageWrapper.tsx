@@ -1,4 +1,10 @@
+import Test from "./Test/Test";
+
 const RiskAssessmentPageWrapper = () => {
-  return <>this is a test</>;
+  return (
+    <>
+      <Test />
+    </>
+  );
 };
 export default RiskAssessmentPageWrapper;
