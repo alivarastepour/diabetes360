@@ -98,7 +98,7 @@
 }
 
 .wrapper-close {
-  animation: close_intro 0.4s ease forwards;
+  animation: close_intro 0.3s linear forwards;
 }
 
 @keyframes close_intro {
@@ -107,7 +107,7 @@
   }
   to {
     opacity: 0;
-    top: -50%;
+    visibility: hidden;
     display: none;
   }
 }
