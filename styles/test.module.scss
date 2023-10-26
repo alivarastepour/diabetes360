@@ -1,21 +1,44 @@
 @import "./variables.scss";
 
-.test-wrapper {
+.test-container {
+  height: 100vh;
+  width: 100vw;
   padding: 0.4rem;
 
-  .question-wrapper {
-    height: 50vh;
+  .test-wrapper {
+    display: flex;
+    flex-direction: row;
+    // gap: 0;
+    // justify-content: flex-start;
+    width: 100%;
+    // height: min-content;
+    // width: 100vw;
+    // position: relative;
 
-    .question {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-    .question-options-wrapper {
-      margin-top: 20%;
-      font-weight: 400;
+    overflow: hidden;
+    .question-wrapper {
+      min-width: calc(100vw - 0.8rem);
+      // transform: translateX(calc(-200vw + 1.6rem));
+      border: 1px solid red;
+      // width: 100vw;
+      // flex: 0 0 calc(100% + 0.8rem);
 
-      input[type="radio"] {
-        margin-top: 0.5rem;
+      &:not(:first-child) {
+        // margin-top: 2rem;
+      }
+      // min-height: 50vh;
+
+      .question {
+        font-size: 1.2rem;
+        font-weight: 300;
+      }
+      .question-options-wrapper {
+        margin-top: 10%;
+        font-weight: 400;
+
+        input[type="radio"] {
+          margin-top: 1rem;
+        }
       }
     }
   }
