@@ -1,6 +1,6 @@
 @import "./variables.scss";
 
-.test-intro-backdrop {
+.test-intro-backdrop-open {
   z-index: 5;
   width: 100vw;
   height: 100vh;
@@ -10,6 +10,9 @@
 
   position: absolute;
   top: 0;
+}
+.test-intro-backdrop-close {
+  display: none;
 }
 
 .test-intro-wrapper {
@@ -88,5 +91,20 @@
       font-size: 1rem;
       border-radius: 0.3rem;
     }
+  }
+}
+
+.wrapper-close {
+  animation: close_intro 0.4s ease forwards;
+}
+
+@keyframes close_intro {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    display: none;
   }
 }
