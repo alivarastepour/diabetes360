@@ -29,6 +29,8 @@
       // backdrop-filter: blur(10px);
       // -webkit-backdrop-filter: blur(10px);
       // border-radius: 1rem;
+      display: grid;
+      place-content: center;
       padding: 1rem;
       transition: 1s cubic-bezier(0.19, 0.11, 0.2, 1) all;
       min-width: calc(100vw - 0.8rem);
@@ -120,12 +122,12 @@
     button {
       border: none;
       background: transparent;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1.3rem;
       margin: 0.2rem;
       text-transform: capitalize;
-      font-weight: 400;
+      font-weight: 500;
       border-radius: 0.3rem;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       cursor: pointer;
     }
     .next,

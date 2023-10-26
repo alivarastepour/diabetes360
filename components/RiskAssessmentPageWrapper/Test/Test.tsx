@@ -4,7 +4,7 @@ import { Montserrat } from "next/font/google";
 import { useCallback, useEffect, useState } from "react";
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "300"],
+  weight: ["400", "300", "500"],
 });
 interface IQuestionnaireState {
   current: number;
