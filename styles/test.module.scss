@@ -56,11 +56,14 @@
           gap: 1rem;
           .option {
             display: flex;
-            flex-direction: row;
+            flex-direction: row-reverse;
             gap: 0.5rem;
             // margin-top: 0.5rem;
             // display: grid;
             // place-content: center;
+            label {
+              display: block;
+            }
           }
         }
 

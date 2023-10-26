@@ -134,8 +134,11 @@ const Test = () => {
                         const [key, value] = Object.entries(option)[0];
                         return (
                           <div key={key} className={styles["option"]}>
+                            <label htmlFor={`${key}-${value}-${id}`}>
+                              {value}
+                            </label>
                             <input
-                              // tabIndex={-1}
+                              tabIndex={-1}
                               type="radio"
                               name={String(id)}
                               id={`${key}-${value}-${id}`}
@@ -144,9 +147,6 @@ const Test = () => {
                                 handleInputChangeCallback(id, +key)
                               }
                             />
-                            <label htmlFor={`${key}-${value}-${id}`}>
-                              {value}
-                            </label>
                           </div>
                         );
                       })}
