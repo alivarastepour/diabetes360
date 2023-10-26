@@ -38,9 +38,9 @@ const TestIntro = ({
   }, []);
   return (
     <>
-      {/* <div
+      <div
         className={styles[`test-intro-backdrop-${open ? "open" : "close"}`]}
-      ></div> */}
+      ></div>
       <div
         className={`${montserrat.className} ${styles["test-intro-wrapper"]} ${
           !open && styles["wrapper-close"]

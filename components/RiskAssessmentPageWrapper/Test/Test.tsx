@@ -135,9 +135,9 @@ const Test = () => {
                         return (
                           <div key={key} className={styles["option"]}>
                             <input
-                              tabIndex={-1}
+                              // tabIndex={-1}
                               type="radio"
-                              name={`${id}`}
+                              name={String(id)}
                               id={`${key}-${value}-${id}`}
                               value={questionnaireState.anwsers[id]}
                               onChange={() =>
