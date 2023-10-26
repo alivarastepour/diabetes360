@@ -86,6 +86,7 @@ const Test = () => {
               id,
               options,
               question,
+              placeHolder,
             } = q;
             return (
               <div
@@ -99,8 +100,12 @@ const Test = () => {
                 </div>
                 <div className={styles["question-options-wrapper"]}>
                   {typeof options === "string" ? (
-                    <div className="input-wrapper">
-                      <input type="text" />
+                    <div className={`${styles["input-wrapper"]}`}>
+                      <input
+                        className={montserrat.className}
+                        type="number"
+                        placeholder={placeHolder}
+                      />
                     </div>
                   ) : (
                     options.map((option) => {

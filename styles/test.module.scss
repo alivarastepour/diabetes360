@@ -45,6 +45,35 @@
         input[type="radio"] {
           margin-top: 1rem;
         }
+
+        input[type="number"] {
+          outline: none;
+          border: 1px solid #ddd;
+          padding: 0.5rem;
+          font-size: 1rem;
+          width: 300px;
+          height: 40px;
+          border-radius: 0.4rem;
+          appearance: textfield;
+          -moz-appearance: textfield;
+          &:hover:not(:focus) {
+            box-shadow: 1px 1px 10px #ccc;
+          }
+
+          &:focus {
+            box-shadow: 1px 1px 10px #aaa;
+          }
+
+          &::placeholder {
+            text-transform: capitalize;
+            font-size: 0.9rem;
+          }
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
       }
     }
   }
