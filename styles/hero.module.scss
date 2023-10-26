@@ -19,19 +19,20 @@
     position: absolute;
     top: 200px;
     margin-left: 1rem;
+    margin-right: 0.3rem;
     .header {
       font-size: 3.5rem;
       color: $secondary_color;
-      margin-left: 0.3rem;
+      margin-left: -0.1rem;
       display: block;
     }
     .changing-content {
       font-size: 1.2rem;
-      margin-left: 0.6rem;
+      // margin-left: 0.6rem;
       display: block;
     }
     .middle {
-      margin-left: 0.5rem;
+      // margin-left: 0.5rem;
       font-size: 2rem;
     }
   }
