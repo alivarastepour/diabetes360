@@ -10,7 +10,10 @@ const Header = () => {
     <>
       <div className={`${tiltNeon.className} ${styles["header-wrapper"]}`}>
         <SharedHeader />
-        risk assessment
+        <div className={styles["header-content"]}>
+          <span>Risk </span>
+          <span>Assessment</span>
+        </div>
       </div>
     </>
   );

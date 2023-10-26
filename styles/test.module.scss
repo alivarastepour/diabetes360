@@ -1,15 +1,15 @@
 @import "./variables.scss";
 
 .test-container {
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: 100vw;
   padding: 0.4rem;
   position: relative;
 
   .test-background {
     position: absolute;
-    width: calc(100% - 0.8rem);
-    height: calc(100% - 0.8rem);
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.4rem);
     // bottom: 0;
     z-index: -1;
     // filter: blur(10px);
@@ -25,9 +25,9 @@
 
     overflow: hidden;
     .question-wrapper {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      // background: rgba(255, 255, 255, 0.2);
+      // backdrop-filter: blur(10px);
+      // -webkit-backdrop-filter: blur(10px);
       // border-radius: 1rem;
       padding: 1rem;
       transition: 1s cubic-bezier(0.19, 0.11, 0.2, 1) all;

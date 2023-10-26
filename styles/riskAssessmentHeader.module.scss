@@ -1,5 +1,22 @@
 @import "./variables.scss";
 
-.header-wrapper{
-    
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 0.2rem 0.4rem;
+  align-items: center;
+  height: 40px;
+  background-color: white;
+  justify-content: space-between;
+
+  .header-content {
+    text-transform: capitalize;
+    font-size: 1.25rem;
+    span {
+      &:first-of-type {
+        color: $secondary_color;
+      }
+      color: $third_color;
+    }
+  }
 }
