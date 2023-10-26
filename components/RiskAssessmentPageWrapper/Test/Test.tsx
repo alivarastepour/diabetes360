@@ -21,6 +21,9 @@ const Test = () => {
     anwsers: new Array(MAX_QUESTION + 1).fill(""),
     current: 0,
   });
+  const [compactMode, setCompactMode] = useState(false);
+
+  // const [introOpen, setIntroOpen] = useState<boolean>(true);
 
   useEffect(() => {
     const element = document.getElementById("test-action-wrapper");
@@ -72,7 +75,6 @@ const Test = () => {
       element.removeEventListener("click", handleTestAction);
     };
   }, [questionnaireState]);
-  console.log(questionnaireState);
 
   const handleInputChange = (questionId: number, newValue: number) => {
     setQuestionnaire((prev) => {
@@ -89,7 +91,7 @@ const Test = () => {
 
   return (
     <>
-      <TestIntro />
+      <TestIntro compactMode={compactMode} setCompactMode={setCompactMode} />
       <div className={`${montserrat.className} ${styles["test-container"]}`}>
         <div className={styles["test-background"]}></div>
         <div className={`${styles["test-wrapper"]}`}>
