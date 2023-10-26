@@ -179,7 +179,7 @@ export const questionnaire: IQuestion[] = [
     question: "what is your education level?",
     correspondingColumn: "Education",
     options: [
-      { 1: "Never attended school or only kindergarten" },
+      { 1: "Never attended school" },
       { 2: "elementary" },
       { 3: "high school" },
       { 4: "high school graduate" },
