@@ -105,9 +105,9 @@
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0;
+    top: -50%;
     display: none;
   }
 }
