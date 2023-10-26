@@ -1,10 +1,14 @@
 import styles from "@/styles/test.module.scss";
 import { MAX_QUESTION, MIN_QUESTION, questionnaire } from "./data";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Tilt_Neon } from "next/font/google";
 import { useCallback, useEffect, useState } from "react";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "300", "500"],
+});
+const tiltNeon1 = Tilt_Neon({
+  subsets: ["latin"],
+  weight: ["400"],
 });
 interface IQuestionnaireState {
   current: number;
@@ -175,6 +179,11 @@ const Test = () => {
               submit
             </button>
           )}
+        </div>
+      </div>
+      <div className={`${tiltNeon1.className} ${styles["large-background"]}`}>
+        <div className={styles["large-background-header"]}>
+          Assess your risk for diabetes with a quick test
         </div>
       </div>
     </>

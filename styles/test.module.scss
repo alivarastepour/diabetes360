@@ -25,6 +25,7 @@
 
     overflow: hidden;
     .question-wrapper {
+      will-change: transform;
       // background: rgba(255, 255, 255, 0.2);
       // backdrop-filter: blur(10px);
       // -webkit-backdrop-filter: blur(10px);
@@ -36,7 +37,7 @@
       align-items: flex-start;
       justify-content: center;
       padding: 1rem;
-      transition: 1s cubic-bezier(0.19, 0.11, 0.2, 1) all;
+      transition: 1s cubic-bezier(0.645, 0.045, 0.355, 1) transform;
       min-width: calc(100vw - 0.8rem);
       min-height: 70vh;
 
@@ -136,6 +137,7 @@
     justify-content: flex-start;
     button {
       border: none;
+      outline: none;
       background: transparent;
       padding: 0.6rem 1.3rem;
       margin: 0.2rem;
@@ -176,25 +178,24 @@
   }
 }
 
+.large-background {
+  display: none;
+}
+
 @media only screen and (min-width: 1000px) {
   .test-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: flex-end;
+
     .test-background {
-      background-size: 500px 500px;
-      // background-position: 100% 0%;
       filter: unset;
-      // background-repeat: no-repeat;
+      background: none;
     }
     .test-wrapper {
       width: 60vw;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: -1px 1px 1px #dedede;
-      // border: 1px solid #ccc;
+      margin-right: 0.7rem;
       border-radius: 1rem;
       .question-wrapper {
         .question {
@@ -221,11 +222,70 @@
     }
     .action-wrapper {
       width: 60vw;
+      margin-right: 0.7rem;
+
       button {
         font-size: 1.2rem;
         padding: 0.7rem 1.4rem;
       }
     }
+  }
+  .large-background {
+    display: block;
+    position: absolute;
+    width: 38vw;
+    height: calc(100vh - 40px);
+    top: 40px;
+    left: 0;
+    background-color: #578ad6;
+    padding: 1rem;
+    display: grid;
+    place-content: center;
+    animation: background_change 20s infinite forwards ease;
+    .large-background-header {
+      color: #fff;
+      font-size: 3.5rem;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 65px;
+        width: 0px;
+        border: 3px solid #fff;
+        animation: extend_underline 1s forwards ease;
+      }
+    }
+    // position: relative;
+  }
+}
+
+@keyframes extend_underline {
+  to {
+    width: 160px;
+  }
+}
+
+@keyframes background_change {
+  from {
+    background-color: #578ad6;
+  }
+  20% {
+    background-color: $secondary_color;
+  }
+  40% {
+    background-color: $third_color;
+  }
+  60% {
+    background-color: $forth_color;
+  }
+  80% {
+    background-color: $fifth_color;
+  }
+  90% {
+    background-color: $sixth_color;
+  }
+  to {
+    background-color: #578ad6;
   }
 }
 
