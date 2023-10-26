@@ -17,15 +17,21 @@
 
 .test-intro-wrapper {
   position: absolute;
-  height: 35vh;
+  // height: 40vh;
   left: 2rem;
   right: 2rem;
-  padding: 0.5rem;
+  padding: 0.7rem;
   z-index: 10;
   background-color: #fff;
   border-radius: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  // align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 1rem;
 
   .test-intro-header {
     font-size: 1.4rem;
@@ -34,17 +40,18 @@
 
   .test-intro-explaination {
     font-size: 0.9rem;
-    margin-top: 1rem;
+    // margin-top: 1rem;
   }
 
   .test-intro-select {
-    margin-top: 1rem;
+    // margin-top: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     // gap: 0.2rem;
     .toggle-wrapper {
+      cursor: pointer;
       position: relative;
       width: 70px;
       height: 30px;
@@ -83,16 +90,17 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-top: 1.5rem;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    // margin-top: 1.5rem;
+    // position: absolute;
+    // bottom: 10px;
+    // right: 10px;
     button {
       border: 1px solid $primary_color;
       background-color: transparent;
       padding: 0.4rem 0.9rem;
       font-size: 1rem;
       border-radius: 0.3rem;
+      cursor: pointer;
     }
   }
 }
@@ -109,5 +117,54 @@
     opacity: 0;
     visibility: hidden;
     display: none;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .test-intro-wrapper {
+    width: 40vw !important;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .test-intro-wrapper {
+    left: 50%;
+    width: 70vw;
+    // height: 40vh;
+    transform: translate(-50%, -50%);
+    right: unset;
+    box-shadow: -1px 1px 1px #ddd, 1px -1px 1px #eee;
+
+    .test-intro-header {
+      font-size: 1.8rem !important;
+    }
+    .test-intro-explaination {
+      font-size: 1.2rem !important;
+    }
+    .test-intro-select {
+      .toggle-text {
+        font-size: 1.4rem !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .test-intro-wrapper {
+    padding: 1.3rem;
+    .test-intro-header {
+      font-size: 1.6rem;
+    }
+    .test-intro-explaination {
+      font-size: 1rem;
+      // text-align: justify;
+    }
+    .test-intro-select {
+      // .toggle-wrapper {
+      // margin-top: 1.5rem;
+      .toggle-text {
+        font-size: 1.2rem;
+        // }
+      }
+    }
   }
 }
