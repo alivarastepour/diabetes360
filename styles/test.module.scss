@@ -38,12 +38,48 @@
         font-weight: 300;
       }
       .question-options-wrapper {
+        .option {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+          margin-top: 0.5rem;
+          // display: grid;
+          // place-content: center;
+        }
         margin-top: 10%;
         font-weight: 400;
         font-size: 1.2rem;
 
         input[type="radio"] {
           margin-top: 1rem;
+
+          appearance: none;
+          -webkit-appearance: none;
+          background-color: #fff;
+          margin: 0;
+
+          font: inherit;
+          color: $third_color;
+          width: 1.15em;
+          height: 1.15em;
+          border: 2px solid $third_color;
+          border-radius: 50%;
+
+          display: grid;
+          place-content: center;
+        }
+        input[type="radio"]::before {
+          content: "";
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: 120ms transform ease-in-out;
+          box-shadow: inset 1rem 1rem $sixth_color;
+        }
+
+        input[type="radio"]:checked::before {
+          transform: scale(1);
         }
 
         input[type="number"] {
