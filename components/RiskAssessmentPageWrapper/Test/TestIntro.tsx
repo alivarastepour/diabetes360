@@ -1,6 +1,11 @@
 import styles from "@/styles/testIntro.module.scss";
 import { useEffect, useState } from "react";
+import { Montserrat } from "next/font/google";
 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "300", "500"],
+});
 const TestIntro = () => {
   const [compactMode, setCompactMode] = useState(false);
   useEffect(() => {
@@ -20,7 +25,9 @@ const TestIntro = () => {
   return (
     <>
       <div className={styles["test-intro-backdrop"]}></div>
-      <div className={styles["test-intro-wrapper"]}>
+      <div
+        className={`${montserrat.className} ${styles["test-intro-wrapper"]}`}
+      >
         <div className={styles["test-intro-header"]}>choose test mode</div>
         <div className={styles["test-intro-explaination"]}>
           Full test, considers a wider range of factors in your life. Compact
@@ -35,6 +42,11 @@ const TestIntro = () => {
                 styles["toggle-indicator"]
               }`}
             ></div>
+          </div>
+        </div>
+        <div className={styles["intro-actions"]}>
+          <div>
+            <button className={montserrat.className}>Start</button>
           </div>
         </div>
       </div>

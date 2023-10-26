@@ -14,7 +14,7 @@
 
 .test-intro-wrapper {
   position: absolute;
-  height: 30vh;
+  height: 35vh;
   left: 2rem;
   right: 2rem;
   padding: 0.5rem;
@@ -35,39 +35,58 @@
   }
 
   .test-intro-select {
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 0.2rem;
+    justify-content: space-between;
+    // gap: 0.2rem;
     .toggle-wrapper {
       position: relative;
-      width: 50px;
-      height: 20px;
-      border-radius: 0.7rem;
-      border: 1px solid black;
+      width: 70px;
+      height: 30px;
+      border-radius: 0.9rem;
+      border: 1px solid #ccc;
       .toggle-indicator {
         position: absolute;
-        width: 16px;
-        height: 16px;
-        border: 1px solid black;
+        width: 26px;
+        height: 26px;
+        // border: 1px solid black;
         top: 1px;
         border-radius: 50%;
         transition: 0.3s ease all;
       }
       .compact {
-        transform: translateX(30px);
+        transform: translateX(40px);
         // left: 5px;
         // right: none;
-        background-color: green;
+        background-color: $secondary_color;
       }
       .full {
         transform: translateX(3px);
 
         // right: 5px;
         // left: none;
-        background: red;
+        background: #ccc;
       }
+    }
+    .toggle-text {
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+  }
+
+  .intro-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    button {
+      border: 1px solid $primary_color;
+      background-color: transparent;
+      padding: 0.4rem 0.9rem;
+      font-size: 1rem;
+      border-radius: 0.3rem;
     }
   }
 }
