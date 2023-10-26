@@ -58,10 +58,13 @@
             display: flex;
             flex-direction: row-reverse;
             gap: 0.5rem;
+
             // margin-top: 0.5rem;
             // display: grid;
             // place-content: center;
             label {
+              cursor: pointer;
+
               display: block;
             }
           }
@@ -73,6 +76,7 @@
 
         input[type="radio"] {
           margin-top: 1rem;
+          cursor: pointer;
 
           appearance: none;
           -webkit-appearance: none;
@@ -195,6 +199,7 @@
     .test-background {
       filter: unset;
       background: none;
+      display: none;
     }
     .test-wrapper {
       width: 60vw;
