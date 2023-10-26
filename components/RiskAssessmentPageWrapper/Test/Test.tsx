@@ -111,6 +111,7 @@ const Test = () => {
                   {typeof options === "string" ? (
                     <div className={`${styles["input-wrapper"]}`}>
                       <input
+                        tabIndex={-1}
                         className={montserrat.className}
                         type="number"
                         placeholder={placeHolder}
@@ -127,6 +128,7 @@ const Test = () => {
                         return (
                           <div key={key} className={styles["option"]}>
                             <input
+                              tabIndex={-1}
                               type="radio"
                               name={`${id}`}
                               id={`${key}-${value}-${id}`}
