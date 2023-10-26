@@ -121,23 +121,27 @@ const Test = () => {
                       />
                     </div>
                   ) : (
-                    options.map((option) => {
-                      const [key, value] = Object.entries(option)[0];
-                      return (
-                        <div key={key} className={styles["option"]}>
-                          <input
-                            type="radio"
-                            name={`${id}`}
-                            id={`${key}-${value}-${id}`}
-                            value={questionnaireState.anwsers[id]}
-                            onChange={() => handleInputChangeCallback(id, +key)}
-                          />
-                          <label htmlFor={`${key}-${value}-${id}`}>
-                            {value}
-                          </label>
-                        </div>
-                      );
-                    })
+                    <div className={styles["options-wrapper"]}>
+                      {options.map((option) => {
+                        const [key, value] = Object.entries(option)[0];
+                        return (
+                          <div key={key} className={styles["option"]}>
+                            <input
+                              type="radio"
+                              name={`${id}`}
+                              id={`${key}-${value}-${id}`}
+                              value={questionnaireState.anwsers[id]}
+                              onChange={() =>
+                                handleInputChangeCallback(id, +key)
+                              }
+                            />
+                            <label htmlFor={`${key}-${value}-${id}`}>
+                              {value}
+                            </label>
+                          </div>
+                        );
+                      })}
+                    </div>
                   )}
                 </div>
               </div>

@@ -29,27 +29,41 @@
       // backdrop-filter: blur(10px);
       // -webkit-backdrop-filter: blur(10px);
       // border-radius: 1rem;
-      display: grid;
-      place-content: center;
+      // display: grid;
+      // place-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
       padding: 1rem;
       transition: 1s cubic-bezier(0.19, 0.11, 0.2, 1) all;
       min-width: calc(100vw - 0.8rem);
 
       .question {
         font-size: 1.6rem;
-        font-weight: 300;
+        font-weight: 400;
       }
       .question-options-wrapper {
-        .option {
+        .options-wrapper {
           display: flex;
-          flex-direction: row;
-          gap: 0.5rem;
-          margin-top: 0.5rem;
-          // display: grid;
-          // place-content: center;
+          flex-direction: column;
+          max-height: 300px;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 1rem;
+          .option {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            // margin-top: 0.5rem;
+            // display: grid;
+            // place-content: center;
+          }
         }
+
         margin-top: 10%;
-        font-weight: 400;
+        font-weight: 300;
         font-size: 1.2rem;
 
         input[type="radio"] {
