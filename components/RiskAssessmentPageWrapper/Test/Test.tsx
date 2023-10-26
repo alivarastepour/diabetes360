@@ -76,8 +76,9 @@ const Test = () => {
 
   return (
     <>
-      <div className={styles["test-container"]}>
-        <div className={`${montserrat.className} ${styles["test-wrapper"]}`}>
+      <div className={`${montserrat.className} ${styles["test-container"]}`}>
+        <div className={styles["test-background"]}></div>
+        <div className={`${styles["test-wrapper"]}`}>
           {questionnaire.map((q) => {
             const {
               correspondingColumn,
@@ -122,9 +123,30 @@ const Test = () => {
           })}
         </div>
         <div id="test-action-wrapper" className={styles["action-wrapper"]}>
-          <button data-action="next">next</button>
-          <button data-action="prev">prev</button>
-          <button data-action="submit">submit</button>
+          {questionnaireState.current !== MAX_QUESTION && (
+            <button
+              data-action="next"
+              className={`${montserrat.className} ${styles["next"]}`}
+            >
+              next
+            </button>
+          )}
+          {questionnaireState.current !== MIN_QUESTION && (
+            <button
+              data-action="prev"
+              className={`${montserrat.className} ${styles["prev"]}`}
+            >
+              prev
+            </button>
+          )}
+          {questionnaireState.current === MAX_QUESTION && (
+            <button
+              data-action="submit"
+              className={`${montserrat.className} ${styles["submit"]}`}
+            >
+              submit
+            </button>
+          )}
         </div>
       </div>
     </>
