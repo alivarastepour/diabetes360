@@ -188,3 +188,6 @@ export const questionnaire: IQuestion[] = [
     featureSelected: false,
   },
 ];
+
+export const MAX_QUESTION = questionnaire.length - 1;
+export const MIN_QUESTION = questionnaire[0].id;
