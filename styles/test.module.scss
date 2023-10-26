@@ -156,3 +156,140 @@
     }
   }
 }
+
+@media only screen and (min-width: 1200px) {
+  .test-container {
+    .test-wrapper {
+      .question-wrapper {
+        .question {
+          font-size: 2.2rem !important;
+        }
+        .question-options-wrapper {
+          .options-wrapper {
+            .option {
+              font-size: 1.6rem !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .test-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .test-background {
+      background-size: 500px 500px;
+      // background-position: 100% 0%;
+      filter: unset;
+      // background-repeat: no-repeat;
+    }
+    .test-wrapper {
+      width: 60vw;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: -1px 1px 1px #dedede;
+      // border: 1px solid #ccc;
+      border-radius: 1rem;
+      .question-wrapper {
+        .question {
+          font-size: 1.9rem;
+          max-width: 55vw;
+        }
+        .question-options-wrapper {
+          input[type="number"] {
+            padding: 0.6rem !important;
+            height: 60px !important;
+            width: 400px !important;
+            font-size: 1.4rem !important;
+            &::placeholder {
+              font-size: 1.2rem !important;
+            }
+          }
+          .options-wrapper {
+            .option {
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+    .action-wrapper {
+      width: 60vw;
+      button {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.4rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
+  .test-container {
+    .test-background {
+      background-size: 400px 400px;
+    }
+    .test-wrapper {
+      .question-wrapper {
+        .question {
+          font-size: 3em;
+        }
+        .question-options-wrapper {
+          input[type="number"] {
+            padding: 0.6rem !important;
+            height: 60px !important;
+            width: 400px !important;
+            font-size: 1.4rem !important;
+            &::placeholder {
+              font-size: 1.2rem !important;
+            }
+          }
+          .options-wrapper {
+            .option {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+    }
+    .action-wrapper {
+      button {
+        font-size: 1.5rem;
+        padding: 0.8rem 1.6rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .test-container {
+    .test-background {
+      background-size: 300px 300px;
+    }
+    .test-wrapper {
+      .question-wrapper {
+        .question {
+          font-size: 2rem;
+        }
+        .question-options-wrapper {
+          .options-wrapper {
+            .option {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+    .action-wrapper {
+      button {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.4rem;
+      }
+    }
+  }
+}
