@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Tilt_Neon, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 import useMediaQuery from "@/hooks/useMediaQuery";
 
@@ -8,11 +7,7 @@ import styles from "@/styles/header.module.scss";
 
 import HMenu from "./HMenu";
 import RMenu from "./RMenu";
-
-const tiltNeon = Tilt_Neon({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import SharedHeader from "@/components/shared/Header";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -31,12 +26,7 @@ const Header = () => {
   return (
     <>
       <div className={`${styles["header-wrapper"]}`}>
-        <div className={`${styles["header-logo"]} ${tiltNeon.className}`}>
-          <Link href={"/"}>
-            <span>Diabetes</span>
-            <span>360</span>
-          </Link>
-        </div>
+        <SharedHeader />
         <div className={`${montserrat.className} ${styles["header-content"]}`}>
           {smallScreen && (
             <div

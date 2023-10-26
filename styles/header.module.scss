@@ -7,18 +7,7 @@
   align-items: center;
   height: 40px;
   background-color: white;
-  .header-logo {
-    font-size: 1.5rem;
-    a {
-      text-decoration: none;
-      :first-child {
-        color: $secondary_color;
-      }
-      :nth-child(2) {
-        color: $third_color;
-      }
-    }
-  }
+
   .header-content {
     .header-h-menu-logo-wrapper {
       height: 100%;
@@ -96,26 +85,14 @@
   }
 }
 
-// @media only screen and (min-width: 500px) {
-//   .header-wrapper {
-//     align-items: center;
-//   }
-// }
-
 @media only screen and (min-width: 800px) and (max-width: 1000px) {
   .header-wrapper {
     padding: 0.5rem 0.8rem;
-    .header-logo {
-      font-size: 2rem;
-    }
   }
 }
 
 @media only screen and (min-width: 1000px) {
   .header-wrapper {
     padding: 1.3rem 0.8rem;
-    .header-logo {
-      font-size: 2.5rem;
-    }
   }
 }
