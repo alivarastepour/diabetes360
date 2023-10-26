@@ -2,6 +2,7 @@ import styles from "@/styles/test.module.scss";
 import { MAX_QUESTION, MIN_QUESTION, questionnaire } from "./data";
 import { Montserrat, Tilt_Neon } from "next/font/google";
 import { useCallback, useEffect, useState } from "react";
+import TestIntro from "./TestIntro";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "300", "500"],
@@ -20,7 +21,6 @@ const Test = () => {
     anwsers: new Array(MAX_QUESTION + 1).fill(""),
     current: 0,
   });
-  console.log(questionnaireState);
 
   useEffect(() => {
     const element = document.getElementById("test-action-wrapper");
@@ -89,6 +89,7 @@ const Test = () => {
 
   return (
     <>
+      <TestIntro />
       <div className={`${montserrat.className} ${styles["test-container"]}`}>
         <div className={styles["test-background"]}></div>
         <div className={`${styles["test-wrapper"]}`}>
