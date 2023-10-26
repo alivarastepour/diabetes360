@@ -48,9 +48,10 @@ const TestIntro = ({
       >
         <div className={styles["test-intro-header"]}>choose test mode</div>
         <div className={styles["test-intro-explaination"]}>
-          Full test, considers a wider range of factors in your life. Compact
-          test, only considers known risk factors of Diabetes. Both tests have
-          acceptable accuracy.
+          You can choose to do the full test or the compact version of it. Full
+          test takes more factors into account while the compact version focuses
+          mostly on Diabetes known risk factors; hence, less questions. Both
+          tests have acceptable accuracies.
         </div>
         <div id="test-intro-select" className={styles["test-intro-select"]}>
           <div className={styles["toggle-text"]}>compact mode</div>
