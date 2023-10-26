@@ -1,20 +1,23 @@
 import styles from "@/styles/test.module.scss";
 import { MAX_QUESTION, MIN_QUESTION, questionnaire } from "./data";
 import { Montserrat } from "next/font/google";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "300"],
 });
 interface IQuestionnaireState {
   current: number;
-  anwsers: { [index: number]: number }[];
+  anwsers: (number | string)[];
 }
+
 const Test = () => {
   const [questionnaireState, setQuestionnaire] = useState<IQuestionnaireState>({
-    anwsers: [],
+    anwsers: new Array(MAX_QUESTION + 1).fill(""),
     current: 0,
   });
+  console.log(questionnaireState);
+
   useEffect(() => {
     const element = document.getElementById("test-action-wrapper");
     if (!element) return;
@@ -32,26 +35,18 @@ const Test = () => {
 
         const viewWidthOffset = -questionId * 100;
         const paddingOffset = 0.8 * questionId;
-        // const offset = `${viewWidthOffset}`;
-        // console.log(
-        //   `translateX(calc(${viewWidthOffset}vw + ${paddingOffset}rem))`
-        // );
 
         elements.forEach((e) => {
           (
             e as HTMLElement
           ).style.transform = `translateX(calc(${viewWidthOffset}vw + ${paddingOffset}rem))`;
         });
-        // element.style.transform = `translateX(calc(${viewWidthOffset}vw + ${paddingOffset}rem))`;
       }
 
       const action = (e.target as HTMLElement).dataset.action;
       switch (action) {
         case "next":
           if (questionnaireState.current === MAX_QUESTION) break;
-          // const answer =
-          //   !!questionnaireState.anwsers[questionnaireState.current];
-          // if (!answer) break;
           const nextQuestion = questionnaireState.current + 1;
           slideToQuestion(nextQuestion);
           setQuestionnaire((prev) => ({ ...prev, current: nextQuestion }));
@@ -73,6 +68,20 @@ const Test = () => {
       element.removeEventListener("click", handleTestAction);
     };
   }, [questionnaireState]);
+  console.log(questionnaireState);
+
+  const handleInputChange = (questionId: number, newValue: number) => {
+    setQuestionnaire((prev) => {
+      const newAnswers = prev.anwsers.map((item, i) => {
+        return i !== questionId ? item : newValue;
+      });
+      return { ...prev, anwsers: newAnswers };
+    });
+  };
+
+  const handleInputChangeCallback = useCallback(handleInputChange, [
+    setQuestionnaire,
+  ]);
 
   return (
     <>
@@ -105,6 +114,10 @@ const Test = () => {
                         className={montserrat.className}
                         type="number"
                         placeholder={placeHolder}
+                        value={questionnaireState.anwsers[id]}
+                        onChange={(e) =>
+                          handleInputChangeCallback(id, e.target.valueAsNumber)
+                        }
                       />
                     </div>
                   ) : (
@@ -114,10 +127,14 @@ const Test = () => {
                         <div key={key} className={styles["option"]}>
                           <input
                             type="radio"
-                            name={`${key}-${value}`}
+                            name={`${id}`}
                             id={`${key}-${value}-${id}`}
+                            value={questionnaireState.anwsers[id]}
+                            onChange={() => handleInputChangeCallback(id, +key)}
                           />
-                          <label htmlFor="">{value}</label>
+                          <label htmlFor={`${key}-${value}-${id}`}>
+                            {value}
+                          </label>
                         </div>
                       );
                     })
