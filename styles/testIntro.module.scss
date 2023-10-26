@@ -84,6 +84,9 @@
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 1.5rem;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
     button {
       border: 1px solid $primary_color;
       background-color: transparent;
