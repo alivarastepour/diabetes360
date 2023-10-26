@@ -4,6 +4,7 @@ interface IQuestion {
   question: string;
   correspondingColumn: string;
   options: TOption[] | "numberInput";
+  placeHolder?: string;
   featureSelected: boolean;
 }
 
@@ -34,6 +35,7 @@ export const questionnaire: IQuestion[] = [
     question: "What is your BMI(body mass index)?",
     correspondingColumn: "BMI",
     options: "numberInput",
+    placeHolder: "enter your BMI.",
     featureSelected: true,
   },
   {
@@ -125,6 +127,7 @@ export const questionnaire: IQuestion[] = [
       "How many days were you in poor mental health in the past 30 days?",
     correspondingColumn: "MentHlth",
     options: "numberInput",
+    placeHolder: "enter a number between 0 and 30.",
     featureSelected: false,
   },
   {
@@ -133,6 +136,7 @@ export const questionnaire: IQuestion[] = [
       "How many days were you in poor physical health(illness or injury) in the past 30 days?",
     correspondingColumn: "PhysHlth",
     options: "numberInput",
+    placeHolder: "enter a number between 0 and 30.",
     featureSelected: false,
   },
   {
