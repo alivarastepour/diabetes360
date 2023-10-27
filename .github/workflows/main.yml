@@ -1,0 +1,28 @@
+name: Diabetes Cypress Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.16.0
+
+      - name: install dependencies
+        run: npm install
+
+      - name: start the application
+        run: npm run dev
+
+      - name: run Cypress tests
+        run: npx cypress run
