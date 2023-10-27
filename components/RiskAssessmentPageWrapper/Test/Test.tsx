@@ -129,8 +129,45 @@ const Test = () => {
     });
   };
 
+  function handleSubmitDisable() {
+    let unanswered = 0;
+    if (compactMode) {
+      const comapctQuestionnaireIds = comapctQuestionnaire.map(
+        (item) => item.id
+      );
+      unanswered = questionnaireState.anwsers
+        .filter((_, index) => comapctQuestionnaireIds.includes(index))
+        .filter((item) => item === "").length;
+    } else {
+      unanswered = questionnaireState.anwsers.filter(
+        (item) => item === ""
+      ).length;
+    }
+
+    // console.log(unansweredCurrent);
+
+    console.log(unanswered);
+
+    if (
+      unanswered === 1 &&
+      questionnaireState.anwsers[questionnaireState.current] === ""
+    ) {
+      console.log("here");
+      return ["disabled", "no-error"];
+    }
+    if (unanswered > 1 && questionnaireState.current === MAX_QUESTION) {
+      return ["disabled", "error"];
+    } else {
+      return ["enabled", "no-error"];
+    }
+  }
+
   const handleInputChangeCallback = useCallback(handleInputChange, [
     setQuestionnaire,
+  ]);
+  const [buttonStatus, errorStatus] = useMemo(handleSubmitDisable, [
+    questionnaireState,
+    compactMode,
   ]);
 
   return (
@@ -220,24 +257,18 @@ const Test = () => {
           )}
           {questionnaireState.current === MAX_QUESTION && (
             <button
-              disabled={
-                questionnaireState.anwsers.filter((item) => item !== "")
-                  .length !==
-                MAX_QUESTION + 1
-              }
+              disabled={buttonStatus === "disabled"}
               data-action="submit"
               className={`${montserrat.className} ${styles["submit"]}`}
             >
               submit
             </button>
           )}
-          {questionnaireState.current === MAX_QUESTION &&
-            questionnaireState.anwsers.filter((item) => item !== "").length !==
-              MAX_QUESTION + 1 && (
-              <div className={styles["error-wrapper"]}>
-                *please fill all questions before submitting your answer.
-              </div>
-            )}
+          {errorStatus === "error" && (
+            <div className={styles["error-wrapper"]}>
+              *please fill all questions before submitting your answer.
+            </div>
+          )}
         </div>
       </div>
       <div className={`${tiltNeon1.className} ${styles["large-background"]}`}>
