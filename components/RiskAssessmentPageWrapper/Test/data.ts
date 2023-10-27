@@ -225,5 +225,9 @@ export const comapctQuestionnaire = questionnaire.filter(
 export const getMaxQuestion = (compact: boolean) =>
   compact ? comapctQuestionnaire.length - 1 : questionnaire.length - 1;
 
-// export const MAX_QUESTION = questionnaire.length - 1;
 export const MIN_QUESTION = questionnaire[0].id;
+
+const INTERCEPT = -3.48803218;
+const COMPACT_MODE_INTERCEPT = -3.12548995;
+export const getIntercept = (compact: boolean) =>
+  compact ? COMPACT_MODE_INTERCEPT : INTERCEPT;
