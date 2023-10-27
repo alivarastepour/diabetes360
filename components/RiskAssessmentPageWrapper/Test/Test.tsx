@@ -14,6 +14,7 @@ import { TErrorStatus } from "@/types/TErrorStatus";
 
 const Test = () => {
   const [compactMode, setCompactMode] = useState(false);
+  const [risk, setRisk] = useState<number | null>(null);
 
   const MAX_QUESTION = useMemo(
     () => getMaxQuestion(compactMode),
@@ -53,8 +54,9 @@ const Test = () => {
 
       function submitAnswers() {
         const logits = calculateLogits(questionnaireState.answers, compactMode);
-        const risk = sigmoid(logits);
-        console.log(risk);
+        const newRisk = sigmoid(logits);
+        slideToQuestion(questionnaireState.current + 1);
+        setRisk(newRisk);
       }
 
       const action = (e.target as HTMLElement).dataset.action;
@@ -142,6 +144,7 @@ const Test = () => {
       questionnaire={compactMode ? comapctQuestionnaire : questionnaire}
       questionnaireState={questionnaireState}
       setCompactMode={setCompactMode}
+      risk={risk}
     />
   );
 };

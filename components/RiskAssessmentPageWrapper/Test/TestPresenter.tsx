@@ -3,6 +3,7 @@ import styles from "@/styles/test.module.scss";
 import TestIntro from "../TestIntro.tsx/TestIntro";
 import { Montserrat, Tilt_Neon } from "next/font/google";
 import { ITestPresenterProps } from "@/interfaces/IPresenterProps";
+import TestResult from "../TestResult/TestResult";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ const TestPresenter = ({
   questionnaire,
   MAX_QUESTION,
   MIN_QUESTION,
+  risk,
 }: ITestPresenterProps) => {
   return (
     <>
@@ -86,39 +88,47 @@ const TestPresenter = ({
               </div>
             );
           })}
+          <div
+            data-id="question-wrapper"
+            className={styles["question-wrapper"]}
+          >
+            <TestResult risk={risk} />
+          </div>
         </div>
-        <div id="test-action-wrapper" className={styles["action-wrapper"]}>
-          {questionnaireState.current !== MAX_QUESTION && (
-            <button
-              data-action="next"
-              className={`${montserrat.className} ${styles["next"]}`}
-            >
-              next
-            </button>
-          )}
-          {questionnaireState.current !== MIN_QUESTION && (
-            <button
-              data-action="prev"
-              className={`${montserrat.className} ${styles["prev"]}`}
-            >
-              prev
-            </button>
-          )}
-          {questionnaireState.current === MAX_QUESTION && (
-            <button
-              disabled={buttonStatus === "disabled"}
-              data-action="submit"
-              className={`${montserrat.className} ${styles["submit"]}`}
-            >
-              submit
-            </button>
-          )}
-          {errorStatus === "error" && (
-            <div className={styles["error-wrapper"]}>
-              *please make sure that all fields have acceptable values.
-            </div>
-          )}
-        </div>
+        {!risk && (
+          <div id="test-action-wrapper" className={styles["action-wrapper"]}>
+            {questionnaireState.current !== MAX_QUESTION && (
+              <button
+                data-action="next"
+                className={`${montserrat.className} ${styles["next"]}`}
+              >
+                next
+              </button>
+            )}
+            {questionnaireState.current !== MIN_QUESTION && (
+              <button
+                data-action="prev"
+                className={`${montserrat.className} ${styles["prev"]}`}
+              >
+                prev
+              </button>
+            )}
+            {questionnaireState.current === MAX_QUESTION && (
+              <button
+                disabled={buttonStatus === "disabled"}
+                data-action="submit"
+                className={`${montserrat.className} ${styles["submit"]}`}
+              >
+                submit
+              </button>
+            )}
+            {errorStatus === "error" && (
+              <div className={styles["error-wrapper"]}>
+                *please make sure that all fields have acceptable values.
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <div className={`${tiltNeon1.className} ${styles["large-background"]}`}>
         <div className={styles["large-background-header"]}>

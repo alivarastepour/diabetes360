@@ -14,4 +14,5 @@ export interface ITestPresenterProps {
   questionnaire: IQuestion[];
   MIN_QUESTION: number;
   MAX_QUESTION: number;
+  risk: number | null;
 }
