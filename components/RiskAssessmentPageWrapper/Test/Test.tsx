@@ -1,27 +1,16 @@
-import styles from "@/styles/test.module.scss";
 import {
-  MIN_QUESTION,
   comapctQuestionnaire,
   getIntercept,
   getMaxQuestion,
+  getMinQuestion,
   questionnaire,
 } from "./data";
-import { Montserrat, Tilt_Neon } from "next/font/google";
 import { useCallback, useEffect, useState, useMemo } from "react";
-import TestIntro from "./TestIntro";
 import { sigmoid } from "./util";
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "300", "500"],
-});
-const tiltNeon1 = Tilt_Neon({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-interface IQuestionnaireState {
-  current: number;
-  anwsers: (number | string)[];
-}
+import TestPresenter from "./TestPresenter";
+import { IQuestionnaireState } from "@/interfaces/IQuestionnaireState";
+import { TButtonStatus } from "@/types/TSubmitButtonStatus";
+import { TErrorStatus } from "@/types/TErrorStatus";
 
 const Test = () => {
   const [compactMode, setCompactMode] = useState(false);
@@ -29,6 +18,7 @@ const Test = () => {
     () => getMaxQuestion(compactMode),
     [compactMode]
   );
+  const MIN_QUESTION = useMemo(getMinQuestion, []);
   const [questionnaireState, setQuestionnaire] = useState<IQuestionnaireState>({
     anwsers: new Array(MAX_QUESTION + 1).fill(""),
     current: 0,
@@ -45,7 +35,7 @@ const Test = () => {
 
       function slideToQuestion(questionId: number) {
         const elements = document.querySelectorAll(
-          `.${styles["question-wrapper"]}`
+          'div[data-id="question-wrapper"]'
         );
         if (!elements) return;
 
@@ -60,18 +50,6 @@ const Test = () => {
       }
 
       function submitAnswers() {
-        // const checkIndices = compactMode
-        //   ? questionnaire
-        //       .filter((item) => item.featureSelected)
-        //       .map((item, _) => item.id)
-        //   : questionnaire.map((item, _) => item.id);
-
-        // function allValuesPresent() {
-        //   return questionnaireState.anwsers
-        //     .filter((_, i) => checkIndices.includes(i))
-        //     .every((item) => item !== "");
-        // }
-
         function getRisk() {
           const logits = questionnaireState.anwsers.map((item, i) => {
             if (compactMode) {
@@ -89,7 +67,6 @@ const Test = () => {
           return risk;
         }
 
-        // const allAnswersAreGiven = allValuesPresent();
         const risk = getRisk();
       }
 
@@ -129,7 +106,7 @@ const Test = () => {
     });
   };
 
-  function handleSubmitDisable() {
+  function handleSubmitDisable(): [TButtonStatus, TErrorStatus] {
     let unanswered = 0;
     if (compactMode) {
       const comapctQuestionnaireIds = comapctQuestionnaire.map(
@@ -152,7 +129,6 @@ const Test = () => {
       unanswered === 1 &&
       questionnaireState.anwsers[questionnaireState.current] === ""
     ) {
-      console.log("here");
       return ["disabled", "no-error"];
     }
     if (unanswered > 1 && questionnaireState.current === MAX_QUESTION) {
@@ -171,112 +147,17 @@ const Test = () => {
   ]);
 
   return (
-    <>
-      <TestIntro compactMode={compactMode} setCompactMode={setCompactMode} />
-      <div className={`${montserrat.className} ${styles["test-container"]}`}>
-        <div className={styles["test-background"]}></div>
-        <div className={`${styles["test-wrapper"]}`}>
-          {(compactMode ? comapctQuestionnaire : questionnaire).map((q, i) => {
-            const {
-              correspondingColumn,
-              featureSelected,
-              id,
-              options,
-              question,
-              placeHolder,
-            } = q;
-            return (
-              <div
-                key={id}
-                // id="question-wrapper"
-                className={styles["question-wrapper"]}
-              >
-                <div className={styles["question"]}>
-                  <span>{i + 1}- </span>
-                  <span>{question}</span>
-                </div>
-                <div className={styles["question-options-wrapper"]}>
-                  {typeof options === "string" ? (
-                    <div className={`${styles["input-wrapper"]}`}>
-                      <input
-                        tabIndex={-1}
-                        className={montserrat.className}
-                        type="number"
-                        placeholder={placeHolder}
-                        value={questionnaireState.anwsers[id]}
-                        onChange={(e) =>
-                          handleInputChangeCallback(id, e.target.valueAsNumber)
-                        }
-                      />
-                    </div>
-                  ) : (
-                    <div className={styles["options-wrapper"]}>
-                      {options.map((option) => {
-                        const [key, value] = Object.entries(option)[0];
-                        return (
-                          <div key={key} className={styles["option"]}>
-                            <label htmlFor={`${key}-${value}-${id}`}>
-                              {value}
-                            </label>
-                            <input
-                              tabIndex={-1}
-                              type="radio"
-                              name={String(id)}
-                              id={`${key}-${value}-${id}`}
-                              value={questionnaireState.anwsers[id]}
-                              onChange={() =>
-                                handleInputChangeCallback(id, +key)
-                              }
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div id="test-action-wrapper" className={styles["action-wrapper"]}>
-          {questionnaireState.current !== MAX_QUESTION && (
-            <button
-              data-action="next"
-              className={`${montserrat.className} ${styles["next"]}`}
-            >
-              next
-            </button>
-          )}
-          {questionnaireState.current !== MIN_QUESTION && (
-            <button
-              data-action="prev"
-              className={`${montserrat.className} ${styles["prev"]}`}
-            >
-              prev
-            </button>
-          )}
-          {questionnaireState.current === MAX_QUESTION && (
-            <button
-              disabled={buttonStatus === "disabled"}
-              data-action="submit"
-              className={`${montserrat.className} ${styles["submit"]}`}
-            >
-              submit
-            </button>
-          )}
-          {errorStatus === "error" && (
-            <div className={styles["error-wrapper"]}>
-              *please fill all questions before submitting your answer.
-            </div>
-          )}
-        </div>
-      </div>
-      <div className={`${tiltNeon1.className} ${styles["large-background"]}`}>
-        <div className={styles["large-background-header"]}>
-          Assess your risk for diabetes with a quick test
-        </div>
-      </div>
-    </>
+    <TestPresenter
+      MAX_QUESTION={MAX_QUESTION}
+      MIN_QUESTION={MIN_QUESTION}
+      buttonStatus={buttonStatus}
+      compactMode={compactMode}
+      errorStatus={errorStatus}
+      handleInputChangeCallback={handleInputChangeCallback}
+      questionnaire={compactMode ? comapctQuestionnaire : questionnaire}
+      questionnaireState={questionnaireState}
+      setCompactMode={setCompactMode}
+    />
   );
 };
 
