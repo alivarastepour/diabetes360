@@ -1,6 +1,6 @@
 import styles from "@/styles/test.module.scss";
 
-import TestIntro from "./TestIntro";
+import TestIntro from "../TestIntro.tsx/TestIntro";
 import { Montserrat, Tilt_Neon } from "next/font/google";
 import { ITestPresenterProps } from "@/interfaces/IPresenterProps";
 
