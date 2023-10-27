@@ -2,12 +2,14 @@ import styles from "@/styles/test.module.scss";
 import {
   MIN_QUESTION,
   comapctQuestionnaire,
+  getIntercept,
   getMaxQuestion,
   questionnaire,
 } from "./data";
 import { Montserrat, Tilt_Neon } from "next/font/google";
 import { useCallback, useEffect, useState, useMemo } from "react";
 import TestIntro from "./TestIntro";
+import { sigmoid } from "./util";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "300", "500"],
@@ -57,6 +59,36 @@ const Test = () => {
         });
       }
 
+      function submitAnswers() {
+        const checkIndices = compactMode
+          ? questionnaire
+              .filter((item) => item.featureSelected)
+              .map((item, _) => item.id)
+          : questionnaire.map((item, _) => item.id);
+        function allValuesPresent() {
+          return questionnaireState.anwsers
+            .filter((_, i) => checkIndices.includes(i))
+            .every((item) => item !== "");
+        }
+        const allAnswersAreGiven = allValuesPresent();
+        const logits = questionnaireState.anwsers.map((item, i) => {
+          if (compactMode) {
+            const fs = questionnaire[i].featureSelected;
+            if (fs) return questionnaire[i].featureSelectedWeight! * +item;
+            else return 0;
+          } else {
+            return questionnaire[i].weight * +item;
+          }
+        });
+        console.log(logits);
+
+        const logit =
+          logits.reduce((a, b) => a + b) + getIntercept(compactMode);
+        console.log(sigmoid(logit));
+
+        console.log(questionnaireState.anwsers);
+      }
+
       const action = (e.target as HTMLElement).dataset.action;
       switch (action) {
         case "next":
@@ -72,6 +104,7 @@ const Test = () => {
           setQuestionnaire((prev) => ({ ...prev, current: prevQuestion }));
           break;
         case "submit":
+          submitAnswers();
           break;
       }
     }
