@@ -31,18 +31,10 @@ const TestPresenter = ({
         <div className={styles["test-background"]}></div>
         <div className={`${styles["test-wrapper"]}`}>
           {questionnaire.map((q, i) => {
-            const {
-              correspondingColumn,
-              featureSelected,
-              id,
-              options,
-              question,
-              placeHolder,
-            } = q;
+            const { id, options, question, placeHolder } = q;
             return (
               <div
                 key={id}
-                // id="question-wrapper"
                 data-id={"question-wrapper"}
                 className={styles["question-wrapper"]}
               >
@@ -58,7 +50,7 @@ const TestPresenter = ({
                         className={montserrat.className}
                         type="number"
                         placeholder={placeHolder}
-                        value={questionnaireState.anwsers[id]}
+                        value={questionnaireState.answers[id]}
                         onChange={(e) =>
                           handleInputChangeCallback(id, e.target.valueAsNumber)
                         }
@@ -78,7 +70,7 @@ const TestPresenter = ({
                               type="radio"
                               name={String(id)}
                               id={`${key}-${value}-${id}`}
-                              value={questionnaireState.anwsers[id]}
+                              value={questionnaireState.answers[id]}
                               onChange={() =>
                                 handleInputChangeCallback(id, +key)
                               }
