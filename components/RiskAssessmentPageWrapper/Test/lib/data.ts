@@ -36,6 +36,7 @@ export const questionnaire: IQuestion[] = [
     featureSelected: true,
     weight: 0.03689709512582953,
     featureSelectedWeight: 0.037820453841007684,
+    min: 0,
   },
   {
     id: 4,
@@ -140,6 +141,8 @@ export const questionnaire: IQuestion[] = [
     placeHolder: "enter a number between 0 and 30.",
     featureSelected: false,
     weight: -0.0021474946482711726,
+    min: 0,
+    max: 30,
   },
   {
     id: 15,
@@ -150,6 +153,8 @@ export const questionnaire: IQuestion[] = [
     placeHolder: "enter a number between 0 and 30.",
     featureSelected: false,
     weight: -0.0039002860795859288,
+    min: 0,
+    max: 30,
   },
   {
     id: 16,
