@@ -9,7 +9,10 @@ const tiltNeon = Tilt_Neon({
 const SharedHeader = () => {
   return (
     <>
-      <div className={`${styles["header-logo"]} ${tiltNeon.className}`}>
+      <div
+        data-test-id={"main-logo"}
+        className={`${styles["header-logo"]} ${tiltNeon.className}`}
+      >
         <Link href={"/"}>
           <span>Diabetes</span>
           <span>360</span>

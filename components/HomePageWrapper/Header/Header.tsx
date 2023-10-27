@@ -30,6 +30,7 @@ const Header = () => {
         <div className={`${montserrat.className} ${styles["header-content"]}`}>
           {smallScreen && (
             <div
+              data-test-id={"hamburger-menu-wrapper"}
               id="header-h-menu-logo-wrapper"
               onClick={() => {
                 setHMenuOpen((prev) => !prev);
