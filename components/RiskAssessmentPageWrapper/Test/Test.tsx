@@ -4,9 +4,9 @@ import {
   getMaxQuestion,
   getMinQuestion,
   questionnaire,
-} from "./data";
+} from "./lib/data";
 import { useCallback, useEffect, useState, useMemo } from "react";
-import { sigmoid } from "./util";
+import { sigmoid } from "./lib/util";
 import TestPresenter from "./TestPresenter";
 import { IQuestionnaireState } from "@/interfaces/IQuestionnaireState";
 import { TButtonStatus } from "@/types/TSubmitButtonStatus";

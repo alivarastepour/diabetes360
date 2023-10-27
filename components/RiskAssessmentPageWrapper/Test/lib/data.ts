@@ -1,14 +1,4 @@
-type TOption = { [index: number]: string };
-interface IQuestion {
-  id: number;
-  question: string;
-  correspondingColumn: string;
-  options: TOption[] | "numberInput";
-  placeHolder?: string;
-  weight: number;
-  featureSelectedWeight?: number;
-  featureSelected: boolean;
-}
+import { IQuestion } from "@/interfaces/IQuestion";
 
 export const questionnaire: IQuestion[] = [
   {
@@ -225,7 +215,7 @@ export const comapctQuestionnaire = questionnaire.filter(
 export const getMaxQuestion = (compact: boolean) =>
   compact ? comapctQuestionnaire.length - 1 : questionnaire.length - 1;
 
-export const MIN_QUESTION = questionnaire[0].id;
+export const getMinQuestion = () => questionnaire[0].id;
 
 const INTERCEPT = -3.48803218;
 const COMPACT_MODE_INTERCEPT = -3.12548995;
