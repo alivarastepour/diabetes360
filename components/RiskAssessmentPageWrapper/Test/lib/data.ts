@@ -212,12 +212,7 @@ export const comapctQuestionnaire = questionnaire.filter(
   (item) => item.featureSelected
 );
 
-export const getMaxQuestion = (compact: boolean) =>
-  compact ? comapctQuestionnaire.length - 1 : questionnaire.length - 1;
-
-export const getMinQuestion = () => questionnaire[0].id;
-
-const INTERCEPT = -3.48803218;
-const COMPACT_MODE_INTERCEPT = -3.12548995;
-export const getIntercept = (compact: boolean) =>
-  compact ? COMPACT_MODE_INTERCEPT : INTERCEPT;
+export const INTERCEPT = -3.48803218;
+export const COMPACT_MODE_INTERCEPT = -3.12548995;
+export const MAX_VIEW_WIDTH = 100;
+export const CONTAINER_PADDING = 0.8; //rem
