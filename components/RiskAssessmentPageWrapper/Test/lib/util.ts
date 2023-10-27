@@ -47,3 +47,13 @@ export const calculateLogits = (
 
   return logits.reduce((a, b) => a + b) + getIntercept(compactMode);
 };
+
+export const getRiskState = (risk: number) => {
+  return risk <= 20
+    ? "very-low"
+    : risk <= 40
+    ? "low"
+    : risk <= 65
+    ? "moderate"
+    : "at-risk";
+};
