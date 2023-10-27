@@ -221,3 +221,9 @@ export const INTERCEPT = -3.48803218;
 export const COMPACT_MODE_INTERCEPT = -3.12548995;
 export const MAX_VIEW_WIDTH = 100;
 export const CONTAINER_PADDING = 0.8; //rem
+export const TEST_RESULT_CONTENT = {
+  "very-low": "You are in a good shape! keep it up.",
+  low: "You have a low risk. Don't forget periodic check-ups.",
+  moderate: "You may be at risk. Consult a doctor.",
+  "at-risk": "You are at risk. Seek medical help immediately.",
+};
