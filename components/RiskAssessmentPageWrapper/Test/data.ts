@@ -190,5 +190,12 @@ export const questionnaire: IQuestion[] = [
   },
 ];
 
-export const MAX_QUESTION = questionnaire.length - 1;
+export const comapctQuestionnaire = questionnaire.filter(
+  (item) => item.featureSelected
+);
+
+export const getMaxQuestion = (compact: boolean) =>
+  compact ? comapctQuestionnaire.length - 1 : questionnaire.length - 1;
+
+// export const MAX_QUESTION = questionnaire.length - 1;
 export const MIN_QUESTION = questionnaire[0].id;

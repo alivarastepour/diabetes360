@@ -1,7 +1,12 @@
 import styles from "@/styles/test.module.scss";
-import { MAX_QUESTION, MIN_QUESTION, questionnaire } from "./data";
+import {
+  MIN_QUESTION,
+  comapctQuestionnaire,
+  getMaxQuestion,
+  questionnaire,
+} from "./data";
 import { Montserrat, Tilt_Neon } from "next/font/google";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import TestIntro from "./TestIntro";
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -17,13 +22,15 @@ interface IQuestionnaireState {
 }
 
 const Test = () => {
+  const [compactMode, setCompactMode] = useState(false);
+  const MAX_QUESTION = useMemo(
+    () => getMaxQuestion(compactMode),
+    [compactMode]
+  );
   const [questionnaireState, setQuestionnaire] = useState<IQuestionnaireState>({
     anwsers: new Array(MAX_QUESTION + 1).fill(""),
     current: 0,
   });
-  const [compactMode, setCompactMode] = useState(false);
-
-  // const [introOpen, setIntroOpen] = useState<boolean>(true);
 
   useEffect(() => {
     const element = document.getElementById("test-action-wrapper");
@@ -74,7 +81,7 @@ const Test = () => {
     return () => {
       element.removeEventListener("click", handleTestAction);
     };
-  }, [questionnaireState]);
+  }, [questionnaireState, compactMode]);
 
   const handleInputChange = (questionId: number, newValue: number) => {
     setQuestionnaire((prev) => {
@@ -95,7 +102,7 @@ const Test = () => {
       <div className={`${montserrat.className} ${styles["test-container"]}`}>
         <div className={styles["test-background"]}></div>
         <div className={`${styles["test-wrapper"]}`}>
-          {questionnaire.map((q) => {
+          {(compactMode ? comapctQuestionnaire : questionnaire).map((q, i) => {
             const {
               correspondingColumn,
               featureSelected,
@@ -111,7 +118,7 @@ const Test = () => {
                 className={styles["question-wrapper"]}
               >
                 <div className={styles["question"]}>
-                  <span>{id + 1}- </span>
+                  <span>{i + 1}- </span>
                   <span>{question}</span>
                 </div>
                 <div className={styles["question-options-wrapper"]}>
