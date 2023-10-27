@@ -1,0 +1,32 @@
+@import "./variables.scss";
+.test-result-wrapper {
+  .test-result-header {
+    text-transform: capitalize;
+    font-size: 1rem;
+  }
+
+  .test-result-subject {
+    text-transform: capitalize;
+    font-size: 2rem;
+  }
+  .test-result-content {
+    font-size: 1.3rem;
+  }
+
+  .test-result-number {
+    font-size: 5rem;
+
+    .very-low {
+      color: rgb(14, 155, 14);
+    }
+    .low {
+      color: rgb(38, 247, 38);
+    }
+    .moderate {
+      color: rgba(186, 186, 0, 0.792);
+    }
+    .at-risk {
+      color: #cc3433;
+    }
+  }
+}
