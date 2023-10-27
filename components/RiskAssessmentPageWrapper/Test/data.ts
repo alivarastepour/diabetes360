@@ -5,6 +5,8 @@ interface IQuestion {
   correspondingColumn: string;
   options: TOption[] | "numberInput";
   placeHolder?: string;
+  weight: number;
+  featureSelectedWeight?: number;
   featureSelected: boolean;
 }
 
@@ -13,22 +15,27 @@ export const questionnaire: IQuestion[] = [
     id: 0,
     question: "Are you diagnosed with high blood pressure?",
     correspondingColumn: "HighBP",
-    options: [{ 0: "Yes I am." }, { 1: "No, I'm not." }],
+    options: [{ 1: "Yes I am." }, { 0: "No, I'm not." }],
     featureSelected: true,
+    weight: 0.3725784485858579,
+    featureSelectedWeight: 0.3901271821015576,
   },
   {
     id: 1,
     question: "Are you diagnosed with high cholesterol?",
     correspondingColumn: "HighChol",
-    options: [{ 0: "Yes I am." }, { 1: "No, I'm not." }],
+    options: [{ 1: "Yes I am." }, { 0: "No, I'm not." }],
     featureSelected: true,
+    weight: 0.28995716475599387,
+    featureSelectedWeight: 0.2992304239683523,
   },
   {
     id: 2,
     question: "Have you checked your cholesterol in the past 5 years?",
     correspondingColumn: "CholCheck",
-    options: [{ 0: "Yes I have." }, { 1: "No, I havn't." }],
+    options: [{ 1: "Yes I have." }, { 0: "No, I havn't." }],
     featureSelected: false,
+    weight: 0.6690995411991598,
   },
   {
     id: 3,
@@ -37,6 +44,8 @@ export const questionnaire: IQuestion[] = [
     options: "numberInput",
     placeHolder: "enter your BMI.",
     featureSelected: true,
+    weight: 0.03689709512582953,
+    featureSelectedWeight: 0.037820453841007684,
   },
   {
     id: 4,
@@ -45,6 +54,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "Smoker",
     options: [{ 0: "No, I havn't." }, { 1: "Yes I have." }],
     featureSelected: false,
+    weight: -0.0024967756625987555,
   },
   {
     id: 5,
@@ -52,6 +62,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "Stroke",
     options: [{ 0: "No, I havn't." }, { 1: "Yes I have." }],
     featureSelected: false,
+    weight: 0.09599408484685666,
   },
   {
     id: 6,
@@ -60,6 +71,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "HeartDiseaseorAttack",
     options: [{ 0: "No, I don't." }, { 1: "Yes I do." }],
     featureSelected: false,
+    weight: 0.1182362347235588,
   },
   {
     id: 7,
@@ -68,6 +80,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "PhysActivity",
     options: [{ 0: "No, I havn't." }, { 1: "Yes I have." }],
     featureSelected: false,
+    weight: -0.0156523589547063,
   },
   {
     id: 8,
@@ -75,6 +88,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "Fruits",
     options: [{ 0: "No, I don't." }, { 1: "Yes I do." }],
     featureSelected: false,
+    weight: -0.01979998235903014,
   },
   {
     id: 9,
@@ -82,6 +96,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "Veggies",
     options: [{ 0: "No, I don't." }, { 1: "Yes I do." }],
     featureSelected: false,
+    weight: -0.05413245195889239,
   },
   {
     id: 10,
@@ -90,6 +105,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "HvyAlcoholConsump",
     options: [{ 0: "No, I am not." }, { 1: "Yes I am." }],
     featureSelected: false,
+    weight: -0.37604701089690423,
   },
   {
     id: 11,
@@ -98,6 +114,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "AnyHealthcare",
     options: [{ 0: "No, I don't." }, { 1: "Yes I do." }],
     featureSelected: false,
+    weight: 0.006265310336406544,
   },
   {
     id: 12,
@@ -106,6 +123,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "NoDocbcCost",
     options: [{ 0: "No, there wasn't." }, { 1: "Yes there was." }],
     featureSelected: false,
+    weight: 0.027911190748329033,
   },
   {
     id: 13,
@@ -120,6 +138,8 @@ export const questionnaire: IQuestion[] = [
       { 5: "Poor" },
     ],
     featureSelected: true,
+    weight: 0.3008612073840079,
+    featureSelectedWeight: 0.3006784742059559,
   },
   {
     id: 14,
@@ -129,6 +149,7 @@ export const questionnaire: IQuestion[] = [
     options: "numberInput",
     placeHolder: "enter a number between 0 and 30.",
     featureSelected: false,
+    weight: -0.0021474946482711726,
   },
   {
     id: 15,
@@ -138,6 +159,7 @@ export const questionnaire: IQuestion[] = [
     options: "numberInput",
     placeHolder: "enter a number between 0 and 30.",
     featureSelected: false,
+    weight: -0.0039002860795859288,
   },
   {
     id: 16,
@@ -145,6 +167,8 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "DiffWalk",
     options: [{ 0: "No, I don't." }, { 1: "Yes I do." }],
     featureSelected: true,
+    weight: 0.08630184175698989,
+    featureSelectedWeight: 0.07021860307767065,
   },
   {
     id: 17,
@@ -152,6 +176,7 @@ export const questionnaire: IQuestion[] = [
     correspondingColumn: "Sex",
     options: [{ 0: "Female" }, { 1: "Male" }],
     featureSelected: false,
+    weight: 0.11340986630298597,
   },
   {
     id: 18,
@@ -173,6 +198,8 @@ export const questionnaire: IQuestion[] = [
       { 13: ">80" },
     ],
     featureSelected: true,
+    weight: 0.07794294636864775,
+    featureSelectedWeight: 0.08500236683792137,
   },
   {
     id: 19,
@@ -187,6 +214,7 @@ export const questionnaire: IQuestion[] = [
       { 6: "college(more than 4 years)" },
     ],
     featureSelected: false,
+    weight: -0.033936944653534966,
   },
 ];
 
