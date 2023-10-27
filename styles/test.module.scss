@@ -118,16 +118,20 @@
           appearance: textfield;
           -moz-appearance: textfield;
           &:hover:not(:focus) {
-            box-shadow: 1px 1px 10px #ccc;
+            box-shadow: 1px 1px 3px #ccc;
           }
 
           &:focus {
-            box-shadow: 1px 1px 10px #aaa;
+            box-shadow: 1px 1px 3px #aaa;
           }
 
           &::placeholder {
             text-transform: capitalize;
             font-size: 0.9rem;
+          }
+
+          &:invalid {
+            border: 1px solid red !important;
           }
         }
 
