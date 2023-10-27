@@ -20,5 +20,8 @@
     "sass": "^1.69.4",
     "typescript": "5.2.2",
     "typewriter-effect": "^2.21.0"
+  },
+  "devDependencies": {
+    "cypress": "^13.3.3"
   }
 }
