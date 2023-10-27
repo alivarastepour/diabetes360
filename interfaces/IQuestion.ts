@@ -9,4 +9,6 @@ export interface IQuestion {
   weight: number;
   featureSelectedWeight?: number;
   featureSelected: boolean;
+  min?: number;
+  max?: number;
 }
