@@ -22,6 +22,7 @@
   right: 2rem;
   padding: 0.7rem;
   z-index: 10;
+  box-shadow: -1px 1px 1px #ddd, 1px -1px 1px #eee;
   background-color: #fff;
   border-radius: 0.5rem;
   top: 50%;
@@ -132,7 +133,6 @@
     // height: 40vh;
     transform: translate(-50%, -50%);
     right: unset;
-    box-shadow: -1px 1px 1px #ddd, 1px -1px 1px #eee;
 
     .test-intro-header {
       font-size: 1.8rem !important;
