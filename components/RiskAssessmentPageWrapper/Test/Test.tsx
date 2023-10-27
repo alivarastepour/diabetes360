@@ -1,12 +1,12 @@
+import { comapctQuestionnaire, questionnaire } from "./lib/data";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import {
-  comapctQuestionnaire,
-  getIntercept,
+  calculateLogits,
   getMaxQuestion,
   getMinQuestion,
-  questionnaire,
-} from "./lib/data";
-import { useCallback, useEffect, useState, useMemo } from "react";
-import { sigmoid } from "./lib/util";
+  sigmoid,
+  slideToQuestion,
+} from "./lib/util";
 import TestPresenter from "./TestPresenter";
 import { IQuestionnaireState } from "@/interfaces/IQuestionnaireState";
 import { TButtonStatus } from "@/types/TSubmitButtonStatus";
@@ -14,13 +14,15 @@ import { TErrorStatus } from "@/types/TErrorStatus";
 
 const Test = () => {
   const [compactMode, setCompactMode] = useState(false);
+
   const MAX_QUESTION = useMemo(
     () => getMaxQuestion(compactMode),
     [compactMode]
   );
   const MIN_QUESTION = useMemo(getMinQuestion, []);
+
   const [questionnaireState, setQuestionnaire] = useState<IQuestionnaireState>({
-    anwsers: new Array(MAX_QUESTION + 1).fill(""),
+    answers: new Array(MAX_QUESTION + 1).fill(""),
     current: 0,
   });
 
@@ -33,56 +35,35 @@ const Test = () => {
       const parent = e.currentTarget;
       if (Object.is(target, parent)) return;
 
-      function slideToQuestion(questionId: number) {
-        const elements = document.querySelectorAll(
-          'div[data-id="question-wrapper"]'
-        );
-        if (!elements) return;
+      function nextQuestion() {
+        if (questionnaireState.current === MAX_QUESTION) return;
 
-        const viewWidthOffset = -questionId * 100;
-        const paddingOffset = 0.8 * questionId;
+        const nextQuestion = questionnaireState.current + 1;
+        slideToQuestion(nextQuestion);
+        setQuestionnaire((prev) => ({ ...prev, current: nextQuestion }));
+      }
 
-        elements.forEach((e) => {
-          (
-            e as HTMLElement
-          ).style.transform = `translateX(calc(${viewWidthOffset}vw + ${paddingOffset}rem))`;
-        });
+      function prevQuestion() {
+        if (questionnaireState.current === MIN_QUESTION) return;
+
+        const prevQuestion = questionnaireState.current - 1;
+        slideToQuestion(prevQuestion);
+        setQuestionnaire((prev) => ({ ...prev, current: prevQuestion }));
       }
 
       function submitAnswers() {
-        function getRisk() {
-          const logits = questionnaireState.anwsers.map((item, i) => {
-            if (compactMode) {
-              const fs = questionnaire[i].featureSelected;
-              if (fs) return questionnaire[i].featureSelectedWeight! * +item;
-              else return 0;
-            } else {
-              return questionnaire[i].weight * +item;
-            }
-          });
-
-          const logit =
-            logits.reduce((a, b) => a + b) + getIntercept(compactMode);
-          const risk = sigmoid(logit);
-          return risk;
-        }
-
-        const risk = getRisk();
+        const logits = calculateLogits(questionnaireState.answers, compactMode);
+        const risk = sigmoid(logits);
+        console.log(risk);
       }
 
       const action = (e.target as HTMLElement).dataset.action;
       switch (action) {
         case "next":
-          if (questionnaireState.current === MAX_QUESTION) break;
-          const nextQuestion = questionnaireState.current + 1;
-          slideToQuestion(nextQuestion);
-          setQuestionnaire((prev) => ({ ...prev, current: nextQuestion }));
+          nextQuestion();
           break;
         case "prev":
-          if (questionnaireState.current === MIN_QUESTION) break;
-          const prevQuestion = questionnaireState.current - 1;
-          slideToQuestion(prevQuestion);
-          setQuestionnaire((prev) => ({ ...prev, current: prevQuestion }));
+          prevQuestion();
           break;
         case "submit":
           submitAnswers();
@@ -99,43 +80,37 @@ const Test = () => {
 
   const handleInputChange = (questionId: number, newValue: number) => {
     setQuestionnaire((prev) => {
-      const newAnswers = prev.anwsers.map((item, i) => {
+      const newAnswers = prev.answers.map((item, i) => {
         return i !== questionId ? item : newValue;
       });
-      return { ...prev, anwsers: newAnswers };
+      return { ...prev, answers: newAnswers };
     });
   };
 
   function handleSubmitDisable(): [TButtonStatus, TErrorStatus] {
+    // todo : full test mode doesn't work properly when last question is not ticked
     let unanswered = 0;
     if (compactMode) {
       const comapctQuestionnaireIds = comapctQuestionnaire.map(
         (item) => item.id
       );
-      unanswered = questionnaireState.anwsers
+      unanswered = questionnaireState.answers
         .filter((_, index) => comapctQuestionnaireIds.includes(index))
         .filter((item) => item === "").length;
     } else {
-      unanswered = questionnaireState.anwsers.filter(
+      unanswered = questionnaireState.answers.filter(
         (item) => item === ""
       ).length;
     }
 
-    // console.log(unansweredCurrent);
-
-    console.log(unanswered);
-
     if (
       unanswered === 1 &&
-      questionnaireState.anwsers[questionnaireState.current] === ""
-    ) {
+      questionnaireState.answers[questionnaireState.current] === ""
+    )
       return ["disabled", "no-error"];
-    }
-    if (unanswered > 1 && questionnaireState.current === MAX_QUESTION) {
+    if (unanswered > 1 && questionnaireState.current === MAX_QUESTION)
       return ["disabled", "error"];
-    } else {
-      return ["enabled", "no-error"];
-    }
+    return ["enabled", "no-error"];
   }
 
   const handleInputChangeCallback = useCallback(handleInputChange, [
