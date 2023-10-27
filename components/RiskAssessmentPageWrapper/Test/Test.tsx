@@ -102,13 +102,23 @@ const Test = () => {
         (item) => item === ""
       ).length;
     }
+    let invalid = 0;
+    if (typeof window !== "undefined" && "document" in window) {
+      const invalidInputsLength =
+        document.querySelectorAll("input:invalid").length;
+
+      invalid += invalidInputsLength;
+    }
 
     if (
       unanswered === 1 &&
       questionnaireState.answers[questionnaireState.current] === ""
     )
       return ["disabled", "no-error"];
-    if (unanswered > 1 && questionnaireState.current === MAX_QUESTION)
+    if (
+      (unanswered > 1 || invalid !== 0) &&
+      questionnaireState.current === MAX_QUESTION
+    )
       return ["disabled", "error"];
     return ["enabled", "no-error"];
   }

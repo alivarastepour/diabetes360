@@ -31,7 +31,7 @@ const TestPresenter = ({
         <div className={styles["test-background"]}></div>
         <div className={`${styles["test-wrapper"]}`}>
           {questionnaire.map((q, i) => {
-            const { id, options, question, placeHolder } = q;
+            const { id, options, question, placeHolder, min, max } = q;
             return (
               <div
                 key={id}
@@ -46,6 +46,8 @@ const TestPresenter = ({
                   {typeof options === "string" ? (
                     <div className={`${styles["input-wrapper"]}`}>
                       <input
+                        min={min}
+                        max={max}
                         tabIndex={-1}
                         className={montserrat.className}
                         type="number"
@@ -113,7 +115,7 @@ const TestPresenter = ({
           )}
           {errorStatus === "error" && (
             <div className={styles["error-wrapper"]}>
-              *please fill all questions before submitting your answer.
+              *please make sure that all fields have acceptable values.
             </div>
           )}
         </div>
