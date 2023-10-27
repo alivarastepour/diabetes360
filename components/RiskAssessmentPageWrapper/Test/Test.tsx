@@ -60,33 +60,37 @@ const Test = () => {
       }
 
       function submitAnswers() {
-        const checkIndices = compactMode
-          ? questionnaire
-              .filter((item) => item.featureSelected)
-              .map((item, _) => item.id)
-          : questionnaire.map((item, _) => item.id);
-        function allValuesPresent() {
-          return questionnaireState.anwsers
-            .filter((_, i) => checkIndices.includes(i))
-            .every((item) => item !== "");
+        // const checkIndices = compactMode
+        //   ? questionnaire
+        //       .filter((item) => item.featureSelected)
+        //       .map((item, _) => item.id)
+        //   : questionnaire.map((item, _) => item.id);
+
+        // function allValuesPresent() {
+        //   return questionnaireState.anwsers
+        //     .filter((_, i) => checkIndices.includes(i))
+        //     .every((item) => item !== "");
+        // }
+
+        function getRisk() {
+          const logits = questionnaireState.anwsers.map((item, i) => {
+            if (compactMode) {
+              const fs = questionnaire[i].featureSelected;
+              if (fs) return questionnaire[i].featureSelectedWeight! * +item;
+              else return 0;
+            } else {
+              return questionnaire[i].weight * +item;
+            }
+          });
+
+          const logit =
+            logits.reduce((a, b) => a + b) + getIntercept(compactMode);
+          const risk = sigmoid(logit);
+          return risk;
         }
-        const allAnswersAreGiven = allValuesPresent();
-        const logits = questionnaireState.anwsers.map((item, i) => {
-          if (compactMode) {
-            const fs = questionnaire[i].featureSelected;
-            if (fs) return questionnaire[i].featureSelectedWeight! * +item;
-            else return 0;
-          } else {
-            return questionnaire[i].weight * +item;
-          }
-        });
-        console.log(logits);
 
-        const logit =
-          logits.reduce((a, b) => a + b) + getIntercept(compactMode);
-        console.log(sigmoid(logit));
-
-        console.log(questionnaireState.anwsers);
+        // const allAnswersAreGiven = allValuesPresent();
+        const risk = getRisk();
       }
 
       const action = (e.target as HTMLElement).dataset.action;
@@ -216,12 +220,24 @@ const Test = () => {
           )}
           {questionnaireState.current === MAX_QUESTION && (
             <button
+              disabled={
+                questionnaireState.anwsers.filter((item) => item !== "")
+                  .length !==
+                MAX_QUESTION + 1
+              }
               data-action="submit"
               className={`${montserrat.className} ${styles["submit"]}`}
             >
               submit
             </button>
           )}
+          {questionnaireState.current === MAX_QUESTION &&
+            questionnaireState.anwsers.filter((item) => item !== "").length !==
+              MAX_QUESTION + 1 && (
+              <div className={styles["error-wrapper"]}>
+                *please fill all questions before submitting your answer.
+              </div>
+            )}
         </div>
       </div>
       <div className={`${tiltNeon1.className} ${styles["large-background"]}`}>

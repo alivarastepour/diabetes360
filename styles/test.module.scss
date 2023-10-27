@@ -142,6 +142,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-start;
+    flex-wrap: wrap;
     button {
       border: none;
       outline: none;
@@ -158,10 +159,24 @@
     .submit {
       background-color: $secondary_color;
       color: #fff;
+      &:disabled {
+        opacity: 0.4;
+        cursor: default;
+      }
     }
     .prev {
       border: 1px solid $secondary_color;
       color: $secondary_color;
+    }
+
+    .error-wrapper {
+      color: #fff;
+      width: 100%;
+      padding: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 0.3rem;
+      background-color: #cc3433;
     }
   }
 }
@@ -231,6 +246,7 @@
     .action-wrapper {
       width: 60vw;
       margin-right: 0.7rem;
+      // justify-content: center;
 
       button {
         font-size: 1.2rem;
