@@ -10,6 +10,10 @@ describe("general tests", () => {
       .click();
     cy.location("pathname").should("eq", "/");
   });
+  it("test button should navigate to its corresponding path.", () => {
+    cy.get(getTestElement("div", "take-test-wrapper")).click();
+    cy.location("pathname").should("eq", "/RiskAssessment");
+  });
 });
 
 describe("small screen tests", () => {
@@ -29,5 +33,24 @@ describe("small screen tests", () => {
       .children()
       .eq(1)
       .should("have.css", "display", "none");
+  });
+  it("background repeat should have the value 'repeat'.", () => {
+    cy.get(getTestElement("div", "hero-background")).should(
+      "have.css",
+      "background-repeat",
+      "repeat"
+    );
+  });
+  it("background should be blurry.", () => {
+    cy.get(getTestElement("div", "hero-background")).should(
+      "not.have.css",
+      "filter",
+      ""
+    );
+  });
+  it("prevention section should be scrollable.", () => {
+    cy.get(getTestElement("div", "how-slider-wrapper"))
+      .should("not.have.css", "scroll", "hidden")
+      .should("have.css", "scroll-snap-type");
   });
 });
