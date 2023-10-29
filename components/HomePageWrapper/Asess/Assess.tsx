@@ -65,7 +65,10 @@ const Assess = () => {
         </div>
         <div className={`${styles["assess-actions"]}`}>
           <button className={styles["take"]}>
-            <div className={styles["take-wrapper"]}>
+            <div
+              data-test-id={"take-test-wrapper"}
+              className={styles["take-wrapper"]}
+            >
               <div
                 className={`${montserrat.className} ${styles["take-content"]}`}
               >

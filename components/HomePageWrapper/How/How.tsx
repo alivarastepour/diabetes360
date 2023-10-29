@@ -46,7 +46,10 @@ const How = () => {
         <div className={styles["how-header"]}>
           <span>How </span> to prevent Diabetes
         </div>
-        <div className={styles["how-slider-wrapper"]}>
+        <div
+          className={styles["how-slider-wrapper"]}
+          data-test-id={"how-slider-wrapper"}
+        >
           {HOW_TO_PREVENT_DATA.map(({ imageAddress, subText, text }) => {
             return (
               <div

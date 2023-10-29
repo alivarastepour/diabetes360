@@ -13,7 +13,10 @@ const Hero = () => {
   return (
     <>
       <div className={`${tiltNeon.className} ${styles["hero-wrapper"]}`}>
-        <div className={styles["hero-background"]}></div>
+        <div
+          data-test-id={"hero-background"}
+          className={styles["hero-background"]}
+        ></div>
         <div className={styles["hero-content"]}>
           <span className={styles["header"]}>Diabetes360,</span>
           <span className={styles["middle"]}>where you learn</span>
