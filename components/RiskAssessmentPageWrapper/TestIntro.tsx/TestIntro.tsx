@@ -39,9 +39,11 @@ const TestIntro = ({
   return (
     <>
       <div
+        data-test-id="test-intro-backdrop"
         className={styles[`test-intro-backdrop-${open ? "open" : "close"}`]}
       ></div>
       <div
+        data-test-id="test-intro-wrapper"
         className={`${montserrat.className} ${styles["test-intro-wrapper"]} ${
           !open && styles["wrapper-close"]
         }`}
@@ -53,10 +55,15 @@ const TestIntro = ({
           mostly on Diabetes known risk factors; hence, less questions. Both
           tests have acceptable accuracies.
         </div>
-        <div id="test-intro-select" className={styles["test-intro-select"]}>
+        <div
+          id="test-intro-select"
+          data-test-id="test-intro-select"
+          className={styles["test-intro-select"]}
+        >
           <div className={styles["toggle-text"]}>compact mode</div>
           <div className={styles["toggle-wrapper"]}>
             <div
+              data-test-id="toggle-indicator"
               className={`${compactMode ? styles["compact"] : styles["full"]} ${
                 styles["toggle-indicator"]
               }`}
@@ -66,6 +73,7 @@ const TestIntro = ({
         <div className={styles["intro-actions"]}>
           <div>
             <button
+              data-test-id="start-test"
               onClick={handleIntroCloseCallback}
               className={montserrat.className}
             >
