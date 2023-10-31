@@ -121,4 +121,39 @@ describe("assessment tests", () => {
     cy.get(getTestElement("input", `input-radio-${i++}-${7}`)).click();
     cy.get(getTestElement("button", "submit-question-button")).click();
   });
+  it("compact test: forgetful behavior", () => {
+    let i = 1;
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    i++;
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-number-${i++}`)).type("12");
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${3}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${7}`)).click();
+    cy.get(getTestElement("button", "submit-question-button")).click();
+    cy.get(getTestElement("div", "form-error-wrapper"))
+      .its("html")
+      .should("not.be", "");
+    cy.get(getTestElement("button", "prev-question-button")).click();
+    cy.get(getTestElement("div", "form-error-wrapper")).should("not.exist");
+    cy.get(getTestElement("button", "prev-question-button")).click();
+    cy.get(getTestElement("button", "prev-question-button")).click();
+    cy.get(getTestElement("button", "prev-question-button")).click();
+    cy.get(getTestElement("input", `input-radio-${2}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.get(getTestElement("button", "submit-question-button")).click();
+    cy.get(getTestElement("div", "form-error-wrapper")).should("not.exist");
+  });
 });
