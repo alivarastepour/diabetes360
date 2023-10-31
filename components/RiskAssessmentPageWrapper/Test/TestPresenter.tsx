@@ -127,7 +127,10 @@ const TestPresenter = ({
               </button>
             )}
             {error !== "" && (
-              <div className={styles["error-wrapper"]}>
+              <div
+                data-test-id="form-error-wrapper"
+                className={styles["error-wrapper"]}
+              >
                 *please make sure that all fields have acceptable values.
               </div>
             )}
