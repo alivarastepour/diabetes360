@@ -51,6 +51,7 @@ const TestPresenter = ({
                         min={min}
                         max={max}
                         tabIndex={-1}
+                        data-test-id={`input-number-${i + 1}`}
                         className={montserrat.className}
                         type="number"
                         placeholder={placeHolder}
@@ -75,6 +76,7 @@ const TestPresenter = ({
                               name={String(id)}
                               id={`${key}-${value}-${id}`}
                               value={questionnaireState.answers[id]}
+                              data-test-id={`input-radio-${i + 1}-${key}`}
                               onChange={() =>
                                 handleInputChangeCallback(id, +key)
                               }
@@ -99,6 +101,7 @@ const TestPresenter = ({
           <div id="test-action-wrapper" className={styles["action-wrapper"]}>
             {questionnaireState.current !== MAX_QUESTION && (
               <button
+                data-test-id="next-question-button"
                 data-action="next"
                 className={`${montserrat.className} ${styles["next"]}`}
               >
@@ -107,6 +110,7 @@ const TestPresenter = ({
             )}
             {questionnaireState.current !== MIN_QUESTION && (
               <button
+                data-test-id="prev-question-button"
                 data-action="prev"
                 className={`${montserrat.className} ${styles["prev"]}`}
               >
@@ -115,6 +119,7 @@ const TestPresenter = ({
             )}
             {questionnaireState.current === MAX_QUESTION && (
               <button
+                data-test-id="submit-question-button"
                 disabled={buttonStatus === "disabled"}
                 data-action="submit"
                 className={`${montserrat.className} ${styles["submit"]}`}
