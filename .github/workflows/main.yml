@@ -9,12 +9,7 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: abhi1693/setup-browser@v0.3.4
-        with:
-          browser: chrome
-          version: latest
-          
+    steps:         
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -30,4 +25,6 @@ jobs:
         run: npm run dev &
 
       - name: run Cypress tests
-        run: npx cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
