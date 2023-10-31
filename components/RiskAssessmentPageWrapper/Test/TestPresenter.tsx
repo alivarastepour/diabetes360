@@ -15,9 +15,7 @@ const tiltNeon1 = Tilt_Neon({
 });
 
 const TestPresenter = ({
-  buttonStatus,
   compactMode,
-  errorStatus,
   setCompactMode,
   questionnaireState,
   handleInputChangeCallback,
@@ -25,6 +23,7 @@ const TestPresenter = ({
   MAX_QUESTION,
   MIN_QUESTION,
   risk,
+  error,
 }: ITestPresenterProps) => {
   return (
     <>
@@ -120,14 +119,14 @@ const TestPresenter = ({
             {questionnaireState.current === MAX_QUESTION && (
               <button
                 data-test-id="submit-question-button"
-                disabled={buttonStatus === "disabled"}
+                // disabled={buttonStatus === "disabled"}
                 data-action="submit"
                 className={`${montserrat.className} ${styles["submit"]}`}
               >
                 submit
               </button>
             )}
-            {errorStatus === "error" && (
+            {error !== "" && (
               <div className={styles["error-wrapper"]}>
                 *please make sure that all fields have acceptable values.
               </div>

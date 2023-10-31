@@ -11,9 +11,11 @@ import TestPresenter from "./TestPresenter";
 import { IQuestionnaireState } from "@/interfaces/IQuestionnaireState";
 import { TButtonStatus } from "@/types/TSubmitButtonStatus";
 import { TErrorStatus } from "@/types/TErrorStatus";
+import { error } from "console";
 
 const Test = () => {
   const [compactMode, setCompactMode] = useState(false);
+  const [formError, setFormError] = useState("");
   const [risk, setRisk] = useState<number | null>(null);
 
   const MAX_QUESTION = useMemo(
@@ -50,9 +52,36 @@ const Test = () => {
         const prevQuestion = questionnaireState.current - 1;
         slideToQuestion(prevQuestion);
         setQuestionnaire((prev) => ({ ...prev, current: prevQuestion }));
+        setFormError("");
+      }
+
+      function isFormComplete() {
+        let unanswered = questionnaireState.answers.filter((item, index) => {
+          if (compactMode) {
+            const isInCompact = comapctQuestionnaire.findIndex(
+              (item) => item.id === index
+            );
+            return isInCompact === -1 ? false : item === "";
+          }
+          return item === "";
+        }).length;
+        const invalidNumebrInputs =
+          document.querySelectorAll("input:invalid").length;
+        unanswered += invalidNumebrInputs;
+
+        if (unanswered === 0) return true;
+        return false;
       }
 
       function submitAnswers() {
+        const formComplete = isFormComplete();
+        setFormError(
+          formComplete
+            ? ""
+            : "*please make sure that all fields have acceptable values."
+        );
+        if (!formComplete) return;
+
         const logits = calculateLogits(questionnaireState.answers, compactMode);
         const newRisk = sigmoid(logits);
         slideToQuestion(questionnaireState.current + 1);
@@ -89,62 +118,21 @@ const Test = () => {
     });
   };
 
-  function handleSubmitDisable(): [TButtonStatus, TErrorStatus] {
-    // todo : full test mode doesn't work properly when last question is not ticked
-    let unanswered = 0;
-    if (compactMode) {
-      const comapctQuestionnaireIds = comapctQuestionnaire.map(
-        (item) => item.id
-      );
-      unanswered = questionnaireState.answers
-        .filter((_, index) => comapctQuestionnaireIds.includes(index))
-        .filter((item) => item === "").length;
-    } else {
-      unanswered = questionnaireState.answers.filter(
-        (item) => item === ""
-      ).length;
-    }
-    let invalid = 0;
-    if (typeof window !== "undefined" && "document" in window) {
-      const invalidInputsLength =
-        document.querySelectorAll("input:invalid").length;
-
-      invalid += invalidInputsLength;
-    }
-
-    if (
-      unanswered === 1 &&
-      questionnaireState.answers[questionnaireState.current] === ""
-    )
-      return ["disabled", "no-error"];
-    if (
-      (unanswered > 1 || invalid !== 0) &&
-      questionnaireState.current === MAX_QUESTION
-    )
-      return ["disabled", "error"];
-    return ["enabled", "no-error"];
-  }
-
   const handleInputChangeCallback = useCallback(handleInputChange, [
     setQuestionnaire,
-  ]);
-  const [buttonStatus, errorStatus] = useMemo(handleSubmitDisable, [
-    questionnaireState,
-    compactMode,
   ]);
 
   return (
     <TestPresenter
       MAX_QUESTION={MAX_QUESTION}
       MIN_QUESTION={MIN_QUESTION}
-      buttonStatus={buttonStatus}
       compactMode={compactMode}
-      errorStatus={errorStatus}
       handleInputChangeCallback={handleInputChangeCallback}
       questionnaire={compactMode ? comapctQuestionnaire : questionnaire}
       questionnaireState={questionnaireState}
       setCompactMode={setCompactMode}
       risk={risk}
+      error={formError}
     />
   );
 };
