@@ -18,6 +18,11 @@
     background-image: url("/blue_circle.svg");
   }
 
+  .no-background {
+    // display: none;
+    background-position: 100% 100%;
+  }
+
   .test-wrapper {
     display: flex;
     flex-direction: row;

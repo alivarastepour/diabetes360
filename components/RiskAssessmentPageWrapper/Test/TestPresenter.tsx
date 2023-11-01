@@ -29,7 +29,11 @@ const TestPresenter = ({
     <>
       <TestIntro compactMode={compactMode} setCompactMode={setCompactMode} />
       <div className={`${montserrat.className} ${styles["test-container"]}`}>
-        <div className={styles["test-background"]}></div>
+        <div
+          className={`${risk && styles["no-background"]} ${
+            styles["test-background"]
+          }`}
+        ></div>
         <div className={`${styles["test-wrapper"]}`}>
           {questionnaire.map((q, i) => {
             const { id, options, question, placeHolder, min, max } = q;
