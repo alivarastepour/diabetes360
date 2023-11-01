@@ -5,6 +5,10 @@
   color: $third_color;
   cursor: pointer;
   position: relative;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
   &::before {
     width: 0;
   }
