@@ -9,7 +9,7 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
 
-    steps:
+    steps:         
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -25,4 +25,4 @@ jobs:
         run: npm run dev &
 
       - name: run Cypress tests
-        run: npx cypress run
+        run: npx cypress run --browser chrome
