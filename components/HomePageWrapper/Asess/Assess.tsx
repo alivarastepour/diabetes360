@@ -38,7 +38,10 @@ const Assess = () => {
     <>
       <div className={styles["assess-wrapper"]}>
         <div className={styles["assess-background"]}></div>
-        <div className={`${tiltNeon.className} ${styles["assess-header"]}`}>
+        <div
+          id="assess-header"
+          className={`${tiltNeon.className} ${styles["assess-header"]}`}
+        >
           <span>Assess </span> your risk
         </div>
         <div className={styles["assess-content-wrapper"]}>

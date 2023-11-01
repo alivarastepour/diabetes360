@@ -43,7 +43,7 @@ const How = () => {
     <>
       <div className={`${tiltNeon.className} ${styles["how-wrapper"]}`}>
         <div className={styles["how-background"]}></div>
-        <div className={styles["how-header"]}>
+        <div id="how-header" className={styles["how-header"]}>
           <span>How </span> to prevent Diabetes
         </div>
         <div

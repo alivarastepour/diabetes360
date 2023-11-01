@@ -13,7 +13,7 @@ const What = () => {
     <>
       <div className={`${tiltNeon.className} ${styles["what-wrapper"]}`}>
         <div className={styles["what-background"]}></div>
-        <div className={styles["what-header"]}>
+        <div id="what-header" className={styles["what-header"]}>
           <span>What </span>
           is diabetes
         </div>
