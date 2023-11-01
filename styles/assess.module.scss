@@ -58,7 +58,8 @@
     .take {
       padding: 0.4rem 1rem;
       border-radius: 0.4rem;
-      border: 1px solid $third_color;
+      // border: 1px solid $third_color;
+      background-color: $third_color;
       font-size: 1.2rem;
 
       .take-wrapper {
@@ -68,8 +69,8 @@
         justify-content: space-between;
         .take-content {
           a {
+            color: #fff;
             text-decoration: none;
-            color: $secondary_color;
           }
         }
         .take-icon {
@@ -88,6 +89,7 @@
       font-size: 0.9rem;
       text-decoration: underline;
       color: #444;
+      display: none;
     }
   }
 }
