@@ -7,7 +7,7 @@ import TestResult from "../TestResult/TestResult";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "300", "500"],
+  weight: ["400", "300", "500", "600"],
 });
 const tiltNeon1 = Tilt_Neon({
   subsets: ["latin"],

@@ -2,6 +2,7 @@ import styles from "@/styles/testResult.module.scss";
 import { getRiskState } from "../Test/lib/util";
 import { useMemo } from "react";
 import { TEST_RESULT_CONTENT } from "../Test/lib/data";
+import Image from "next/image";
 
 const TestResult = ({ risk }: { risk: number | null }) => {
   const riskPercent = useMemo(
@@ -22,11 +23,29 @@ const TestResult = ({ risk }: { risk: number | null }) => {
         <div className={styles["test-result-number"]}>
           <span className={styles[riskState]}>{riskPercent}%</span>
         </div>
-        <div className={styles["test-result-subject"]}>
-          {riskState.replaceAll("-", " ")}
-        </div>
-        <div className={styles["test-result-content"]}>
-          {TEST_RESULT_CONTENT[riskState]}
+        <div
+          className={`${styles[riskState]} ${styles["result-content-wrapper"]}`}
+        >
+          <div className={styles["icon-wrapper"]}>
+            <Image
+              src={
+                riskState === "low" || riskState === "very-low"
+                  ? "/confirm.svg"
+                  : "/alert.svg"
+              }
+              width={50}
+              height={50}
+              alt="s"
+            />
+          </div>
+          <div className={`${styles["text-wrapper"]}`}>
+            <div className={styles["test-result-subject"]}>
+              {riskState.replaceAll("-", " ")}
+            </div>
+            <div className={`${styles["test-result-content"]}`}>
+              {TEST_RESULT_CONTENT[riskState]}
+            </div>
+          </div>
         </div>
       </div>
     </>
