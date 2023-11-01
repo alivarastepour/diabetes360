@@ -95,13 +95,13 @@ describe("assessment introduction dialog tests", () => {
   });
 });
 
-describe("assessment tests", () => {
+describe("assessment tests(compact)", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/RiskAssessment");
     cy.get(getTestElement("div", "test-intro-select")).click();
     cy.get(getTestElement("button", "start-test")).click();
   });
-  it("compact test: normal behavior", () => {
+  it("normal behavior", () => {
     let i = 1;
     cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
     cy.get(getTestElement("button", "next-question-button")).click();
@@ -121,7 +121,7 @@ describe("assessment tests", () => {
     cy.get(getTestElement("input", `input-radio-${i++}-${7}`)).click();
     cy.get(getTestElement("button", "submit-question-button")).click();
   });
-  it("compact test: forgetful behavior", () => {
+  it("forgetful behavior", () => {
     let i = 1;
     cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
     cy.get(getTestElement("button", "next-question-button")).click();
@@ -155,5 +155,96 @@ describe("assessment tests", () => {
     cy.get(getTestElement("button", "next-question-button")).click();
     cy.get(getTestElement("button", "submit-question-button")).click();
     cy.get(getTestElement("div", "form-error-wrapper")).should("not.exist");
+  });
+
+  it("invalid number inputs", () => {
+    let i = 1;
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-number-${i++}`)).type("-1");
+    cy.get("input:invalid").should("have.length", 1);
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${3}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${6}`)).click();
+    cy.get(getTestElement("button", "submit-question-button")).click();
+    cy.get(getTestElement("div", "form-error-wrapper")).should("exist");
+  });
+});
+describe("assessment tests(full)", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000/RiskAssessment");
+    cy.get(getTestElement("button", "start-test")).click();
+  });
+  it("normal behavior", () => {
+    let i = 1;
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-number-${i++}`)).type("40");
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${0}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${4}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-number-${i++}`)).type("5");
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-number-${i++}`)).type("15");
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${1}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${7}`)).click();
+    cy.get(getTestElement("button", "next-question-button")).click();
+    cy.wait(1000);
+    cy.get(getTestElement("input", `input-radio-${i++}-${6}`)).click();
+    cy.get(getTestElement("button", "submit-question-button")).click();
   });
 });
