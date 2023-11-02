@@ -77,7 +77,7 @@ const TestIntro = ({
               onClick={handleIntroCloseCallback}
               className={montserrat.className}
             >
-              Start
+              Get started
             </button>
           </div>
         </div>
