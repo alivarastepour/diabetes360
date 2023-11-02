@@ -55,35 +55,46 @@
       font-weight: normal;
       cursor: pointer;
     }
-    .take {
-      padding: 0.4rem 1rem;
-      border-radius: 0.4rem;
-      // border: 1px solid $third_color;
-      background-color: $third_color;
-      font-size: 1.2rem;
+    a {
+      position: relative;
+      display: block;
+      position: relative;
+      color: #fff;
+      text-decoration: none;
 
-      .take-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        .take-content {
-          a {
-            color: #fff;
-            text-decoration: none;
+      height: 100%;
+      .take {
+        padding: 1rem 2rem;
+        
+        border-radius: 0.4rem;
+        background-color: $third_color;
+        font-size: 1.2rem;
+        color: #fff;
+
+        .take-wrapper {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          .take-content {
+            // a {
+            //   color: #fff;
+            //   text-decoration: none;
+            // }
           }
-        }
-        .take-icon {
-          width: 15px;
-          height: 15px;
-          background-image: url("/arrow.svg");
-          background-size: 15px 15px;
-          background-repeat: no-repeat;
-          margin-left: 0.2rem;
-          transition: 0.3s all ease;
+          .take-icon {
+            width: 15px;
+            height: 15px;
+            background-image: url("/arrow.svg");
+            background-size: 15px 15px;
+            background-repeat: no-repeat;
+            margin-left: 0.2rem;
+            transition: 0.3s all ease;
+          }
         }
       }
     }
+
     .read {
       margin-top: 0.5rem;
       font-size: 0.9rem;
@@ -180,7 +191,6 @@
     }
     .assess-actions {
       .take {
-        padding: 1rem 2rem;
         font-size: 1.4rem;
         .take-wrapper {
           .take-icon {
@@ -223,7 +233,7 @@
       height: calc(100% - 1rem);
     }
     .assess-actions {
-      .take {
+      a {
         :hover {
           .take-icon {
             transform: translateX(0.25rem);

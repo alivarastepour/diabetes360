@@ -67,19 +67,21 @@ const Assess = () => {
           </div>
         </div>
         <div className={`${styles["assess-actions"]}`}>
-          <button className={styles["take"]}>
-            <div
-              data-test-id={"take-test-wrapper"}
-              className={styles["take-wrapper"]}
-            >
+          <Link href={"/RiskAssessment"}>
+            <button className={styles["take"]}>
               <div
-                className={`${montserrat.className} ${styles["take-content"]}`}
+                data-test-id={"take-test-wrapper"}
+                className={styles["take-wrapper"]}
               >
-                <Link href={"/RiskAssessment"}>take the test</Link>
+                <div
+                  className={`${montserrat.className} ${styles["take-content"]}`}
+                >
+                  take the test
+                </div>
+                <div className={styles["take-icon"]}></div>
               </div>
-              <div className={styles["take-icon"]}></div>
-            </div>
-          </button>
+            </button>
+          </Link>
           <button className={`${montserrat.className} ${styles["read"]}`}>
             read more about our approach
           </button>
