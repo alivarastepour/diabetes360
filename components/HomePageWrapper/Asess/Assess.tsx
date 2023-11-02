@@ -59,7 +59,7 @@ const Assess = () => {
           </div>
           <div className={styles["medical-test"]}>
             <Image
-              alt="A"
+              alt="A doctor assessing result of a medical test."
               src={"/medical_test.jpg"}
               width={imageRect.width}
               height={imageRect.height}

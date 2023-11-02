@@ -34,7 +34,7 @@ const What = () => {
           <div className={styles["diabeto"]}>
             <div>
               <Image
-                alt="diabeto"
+                alt="diabeto vs diabetes"
                 src={"/diadio.png"}
                 width={395}
                 height={627}

@@ -35,7 +35,7 @@ const TestResult = ({ risk }: { risk: number | null }) => {
               }
               width={50}
               height={50}
-              alt="s"
+              alt="An icon to visualize the test result."
             />
           </div>
           <div className={`${styles["text-wrapper"]}`}>
