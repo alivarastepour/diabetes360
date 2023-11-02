@@ -28,6 +28,7 @@ const TestResult = ({ risk }: { risk: number | null }) => {
         >
           <div className={styles["icon-wrapper"]}>
             <Image
+              priority={true}
               src={
                 riskState === "low" || riskState === "very-low"
                   ? "/confirm.svg"

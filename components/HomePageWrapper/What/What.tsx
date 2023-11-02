@@ -34,6 +34,7 @@ const What = () => {
           <div className={styles["diabeto"]}>
             <div>
               <Image
+                priority={true}
                 alt="diabeto vs diabetes"
                 src={"/diadio.png"}
                 width={395}
