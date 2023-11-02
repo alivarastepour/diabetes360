@@ -50,10 +50,10 @@ const TestIntro = ({
       >
         <div className={styles["test-intro-header"]}>choose test mode</div>
         <div className={styles["test-intro-explaination"]}>
-          We've prepared 2 sets of questions for you. The first set, includes
-          more questions and takes more risk factors into account. The second
-          set(compact mode), is actually a subset of the former and takes only
-          the most important risk factors of Diabetes into account.
+          We&apos;ve prepared 2 sets of questions for you. The first set,
+          includes more questions and takes more risk factors into account. The
+          second set(compact mode), is actually a subset of the former and takes
+          only the most important risk factors of Diabetes into account.
         </div>
         <div
           id="test-intro-select"
