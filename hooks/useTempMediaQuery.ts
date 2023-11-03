@@ -1,5 +1,8 @@
-import { TMediaQuery } from "@/types/TMediaQuery";
-import { useEffect, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
+export type TMediaQuery = `${"sm" | "lg"}-${number}`;
+// type TMediaQueryDispatcher =
 
 class MediaQuerySingleton {
   private static isInitialized: boolean = false;
@@ -7,7 +10,11 @@ class MediaQuerySingleton {
   private static queryResult: Record<TMediaQuery, boolean> = {};
   private static listenerDelay: boolean = false;
   private static listenerDelayAmount = 100;
-
+  public static dispatchersMap: {
+    [id: string]: React.Dispatch<
+      React.SetStateAction<Record<TMediaQuery, boolean>>
+    >;
+  }[];
   constructor(listenerDelayAmount?: number) {
     if (MediaQuerySingleton.isInitialized) {
       throw Error("reinitializing a singleton class");
@@ -25,6 +32,24 @@ class MediaQuerySingleton {
         MediaQuerySingleton.eventListenerCallback
       );
     }
+  }
+
+  public get queryList(): TMediaQuery[] {
+    return MediaQuerySingleton.queryList;
+  }
+
+  public addToDispatchers(
+    id: string,
+    dispatcher: React.Dispatch<
+      React.SetStateAction<Record<TMediaQuery, boolean>>
+    >
+  ) {
+    if (Object.keys(MediaQuerySingleton.dispatchersMap).includes(id)) return;
+    MediaQuerySingleton.dispatchersMap.push({ [id]: dispatcher });
+  }
+
+  public get queryResult(): Record<TMediaQuery, boolean> {
+    return MediaQuerySingleton.queryResult;
   }
 
   private static eventListenerCallback() {
@@ -47,13 +72,14 @@ class MediaQuerySingleton {
       const res = comparator === "sm" ? width < +value : +value < width;
       MediaQuerySingleton.queryResult[query] = res;
     }
+
+    for (const obj of MediaQuerySingleton.dispatchersMap) {
+      Object.values(obj)[0](MediaQuerySingleton.queryResult);
+    }
+
     setTimeout(() => {
       MediaQuerySingleton.listenerDelay = false;
     }, MediaQuerySingleton.listenerDelayAmount);
-  }
-
-  public get queryList(): TMediaQuery[] {
-    return MediaQuerySingleton.queryList;
   }
 
   public addQueries(queries: TMediaQuery[]) {
@@ -64,25 +90,41 @@ class MediaQuerySingleton {
     }
     MediaQuerySingleton.resizeListener(true);
   }
-
-  public get queryResult(): Record<TMediaQuery, boolean> {
-    return MediaQuerySingleton.queryResult;
-  }
 }
 
 function mediaQueryFactory() {
   return new MediaQuerySingleton();
 }
+
 const mediaQuery = mediaQueryFactory();
 
-export const useTempMediaQuery = ({ queries }: { queries: TMediaQuery[] }) => {
+const useMediaQuery = <T extends TMediaQuery[]>({
+  queries,
+}: {
+  queries: T;
+}): Record<T[number], boolean> => {
+  const [result, setResult] = useState<Record<TMediaQuery, boolean>>({});
+  const ref = useRef<null | string>(null);
+  console.log("also here");
+
   useEffect(() => {
-    mediaQuery.addQueries(queries);
+    if (!ref.current) {
+      console.log("not here");
+
+      ref.current = uuidv4();
+    }
   }, []);
 
   useEffect(() => {
-    console.log("changed");
-  }, [mediaQuery.queryResult]);
+    if (!ref.current) return;
 
-  return useMemo(() => mediaQuery.queryResult, [mediaQuery.queryResult]);
+    console.log("here");
+
+    mediaQuery.addToDispatchers(ref.current, setResult);
+    mediaQuery.addQueries(queries);
+  }, [queries, setResult]);
+
+  return result;
 };
+
+export default useMediaQuery;
