@@ -1,7 +1,7 @@
 # diabetes360
 
 From conceptual point of view, diabetes360 aims to raise awareness about Diabetes, a chronic disease which affects how body regulates blood sugar.
-From a technical point of view, this project aims to embed an ML model into a PWA, bootstrapped with Nextjs.
+From a technical point of view, this project aims to embed an ML model into a SPA, bootstrapped with Nextjs.
 
 ## Diabetes predection
 
